@@ -1,0 +1,31 @@
+ONBOARDING CALL TRANSCRIPT - Account: ACE PLUMBING & HVAC (ACE_001)
+Date: 2024-02-01
+Participants: Onboarding Specialist (Clara), Client: Mike Donovan
+
+Specialist: Hi Mike, this is your onboarding call. We're going to lock in the final details before going live. I have your demo notes here. Let's confirm and update anything that's changed.
+
+Mike: Sure. So a couple things have changed since the demo. First, Carlos left the company. So for emergency routing, it's now just me directly: 512-555-0101. Don't try anyone else first.
+
+Specialist: Got it — sole emergency contact is you at 512-555-0101. What about hours?
+
+Mike: We added Sunday hours — 10am to 3pm now. So we're 7 days a week.
+
+Specialist: Great. Anything change on the emergency definitions?
+
+Mike: Actually, add "gas smell" to the emergency list. We picked up a gas line service recently.
+
+Specialist: Noted. Any changes to the ServiceTrade constraint?
+
+Mike: Same — no sprinkler jobs. But also add: never create any gas line estimates in the system. Our insurance requires those go through a special form.
+
+Specialist: What about the agent greeting — any preference?
+
+Mike: Yeah, I want it to say "Ace Plumbing and HVAC, serving Austin since 1998" in the intro.
+
+Specialist: Perfect. Any new routing rules?
+
+Mike: If someone specifically asks for an estimate for a new construction project, take their info and tell them we'll have our estimator, Paula, call them back. Don't transfer those — Paula handles them separately.
+
+Specialist: Got it. Anything else?
+
+Mike: That's it for now.

@@ -1,0 +1,31 @@
+DEMO CALL TRANSCRIPT - Account: ACE PLUMBING & HVAC
+Date: 2024-01-15
+Participants: Sales Rep (Clara), Client: Mike Donovan (Owner, Ace Plumbing & HVAC)
+
+Sales Rep: Hi Mike, thanks for jumping on this call. I'm going to walk you through how Clara Answers would handle your inbound calls. Can you tell me a bit about how your business runs today?
+
+Mike: Sure. So we're Ace Plumbing and HVAC, based out of Austin, Texas. We do residential plumbing and HVAC work. We're open Monday through Friday, 7am to 6pm, and Saturday 8am to 2pm. Closed Sundays.
+
+Sales Rep: Got it. And what happens when someone calls in after hours?
+
+Mike: Right now it just goes to voicemail and honestly we lose a lot of jobs that way. That's why I'm interested in your service. We definitely have emergencies — burst pipes, no heat in winter, that sort of thing. Those need to go to our on-call tech, which is usually my guy Carlos. His cell is 512-555-0192. If he doesn't pick up within 2 rings, try me, Mike, at 512-555-0101.
+
+Sales Rep: Perfect. And for non-emergency after hours calls?
+
+Mike: Those can wait till morning. Just take a message — name, number, and what it's about. We'll call back first thing.
+
+Sales Rep: What counts as an emergency for you specifically?
+
+Mike: Burst pipe, major leak, sewage backup, no heat when it's under 40 degrees outside, and AC out when it's over 95. That's it. Don't want techs called out for a dripping faucet.
+
+Sales Rep: Understood. Do you use any field service software we should know about?
+
+Mike: Yeah, ServiceTrade. But heads up — do NOT create any sprinkler or fire suppression jobs in there. We don't do that work and it messes up our reporting.
+
+Sales Rep: Noted. And your office address?
+
+Mike: 4821 Burnet Road, Austin TX 78756.
+
+Sales Rep: Great. Anything else the agent should know?
+
+Mike: If a caller is really upset or threatening, just escalate to me directly regardless of time.

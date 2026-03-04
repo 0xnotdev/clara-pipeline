@@ -1,0 +1,31 @@
+DEMO CALL TRANSCRIPT - Account: RAPID RESPONSE RESTORATION
+Date: 2024-01-19
+Participants: Sales Rep (Clara), Client: Jerome Washington (Owner, Rapid Response Restoration)
+
+Sales Rep: Jerome, great to meet you. Tell me about your restoration business.
+
+Jerome: Rapid Response Restoration — we do water damage, fire damage, and mold remediation in the Atlanta metro area. We're 24/7 by nature. Our office team is available Monday through Friday 8am to 6pm Eastern, but we take emergency calls around the clock.
+
+Sales Rep: So every after-hours call could be an emergency?
+
+Jerome: Pretty much. Water damage especially — every minute counts. Emergencies are: active flooding or water intrusion, sewage backup, fire or smoke damage within the last 24 hours, and mold in HVAC systems. Those all need immediate dispatch.
+
+Sales Rep: And routing?
+
+Jerome: For emergencies, call our dispatch line first: 404-555-0600. They're staffed 24/7 internally. If dispatch doesn't answer within 2 rings — that almost never happens — then call me, Jerome, at 404-555-0612. Never leave the caller without a resolution.
+
+Sales Rep: Non-emergency after hours?
+
+Jerome: Still take detailed info: name, number, address, type of damage, when it happened, if there's standing water currently. We'll call back within 2 hours even for non-emergency.
+
+Sales Rep: Software or integrations?
+
+Jerome: We use Xactimate for estimates. Absolutely do not reference Xactimate to callers. Also use RMS for job management — same rule.
+
+Sales Rep: Office address?
+
+Jerome: 3200 Peachtree Road NE, Atlanta GA 30305.
+
+Sales Rep: Any other rules?
+
+Jerome: If the caller mentions insurance — State Farm, Allstate, doesn't matter — flag it. Also if they say it's a rental property, note that too, the landlord vs tenant situation complicates dispatch.

@@ -1,0 +1,241 @@
+{
+  "name": "Clara Pipeline — Demo + Onboarding",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "start-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Read all demo transcript filenames\n// In production: scan /transcripts/demo/ directory\nconst accounts = [\n  { file: 'demo_001.txt', account_id: 'ACE_001' },\n  { file: 'demo_002.txt', account_id: 'BSE_002' },\n  { file: 'demo_003.txt', account_id: 'GCR_003' },\n  { file: 'demo_004.txt', account_id: 'NHS_004' },\n  { file: 'demo_005.txt', account_id: 'RRR_005' },\n];\nreturn accounts.map(a => ({ json: a }));"
+      },
+      "id": "list-demo-transcripts",
+      "name": "List Demo Transcripts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Reads transcript file from filesystem\n// In n8n self-hosted: use filesystem or HTTP request node\nconst { file, account_id } = $input.item.json;\n// Simulate reading file content\nreturn [{ json: { account_id, file, transcript: `[Content of ${file}]`, status: 'loaded' } }];"
+      },
+      "id": "read-transcript",
+      "name": "Read Transcript File",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "llama-3.3-70b-versatile"
+            },
+            {
+              "name": "messages",
+              "value": "={{ [{\"role\":\"system\",\"content\":\"You are a precise data extraction assistant. Extract structured account memo JSON from call transcripts. Return only valid JSON.\"},{\"role\":\"user\",\"content\":\"Extract account memo for account_id \" + $json.account_id + \" from this transcript:\\n\" + $json.transcript}] }}"
+            },
+            { "name": "max_tokens", "value": 2000 },
+            { "name": "temperature", "value": 0.1 }
+          ]
+        },
+        "options": {}
+      },
+      "id": "groq-extract-memo",
+      "name": "Groq — Extract Account Memo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300],
+      "notes": "Calls Groq API to extract structured account memo. Set GROQ_API_KEY in credentials."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse LLM response and extract JSON\nconst response = $input.item.json;\nconst content = response.choices[0].message.content;\nlet memo;\ntry {\n  const clean = content.replace(/```json/g,'').replace(/```/g,'').trim();\n  memo = JSON.parse(clean);\n} catch(e) {\n  memo = { error: 'parse_failed', raw: content.substring(0,500) };\n}\nreturn [{ json: { ...memo, _raw_input: $input.item.json } }];"
+      },
+      "id": "parse-memo",
+      "name": "Parse Memo JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "model", "value": "llama-3.3-70b-versatile" },
+            {
+              "name": "messages",
+              "value": "={{ [{\"role\":\"system\",\"content\":\"You are a Retell AI agent designer. Generate agent spec JSON from account memos. Return only valid JSON.\"},{\"role\":\"user\",\"content\":\"Generate Retell Agent Spec v1 for this account memo:\\n\" + JSON.stringify($json)}] }}"
+            },
+            { "name": "max_tokens", "value": 3000 },
+            { "name": "temperature", "value": 0.1 }
+          ]
+        }
+      },
+      "id": "groq-generate-agent",
+      "name": "Groq — Generate Agent Spec",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Save outputs to filesystem\n// In n8n self-hosted: use Write Binary File or HTTP node to your storage\nconst memo = $input.item.json;\nconst accountId = memo.account_id || 'UNKNOWN';\nconsole.log(`Saving v1 outputs for ${accountId}`);\n// Create task tracker item\nconst task = {\n  task_id: `TASK-${accountId}-V1`,\n  title: `[V1] Agent configured for ${memo.company_name}`,\n  account_id: accountId,\n  status: 'ready_for_review',\n  version: 'v1',\n  created_at: new Date().toISOString()\n};\nreturn [{ json: { status: 'saved', account_id: accountId, task } }];"
+      },
+      "id": "save-v1-outputs",
+      "name": "Save v1 Outputs + Task",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1560, 300]
+    },
+    {
+      "parameters": {},
+      "id": "pipeline-b-trigger",
+      "name": "Pipeline B Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 560]
+    },
+    {
+      "parameters": {
+        "jsCode": "const onboardingFiles = [\n  { file: 'onboarding_001.txt', account_id: 'ACE_001' },\n  { file: 'onboarding_002.txt', account_id: 'BSE_002' },\n  { file: 'onboarding_003.txt', account_id: 'GCR_003' },\n  { file: 'onboarding_004.txt', account_id: 'NHS_004' },\n  { file: 'onboarding_005.txt', account_id: 'RRR_005' },\n];\nreturn onboardingFiles.map(f => ({ json: f }));"
+      },
+      "id": "list-onboarding",
+      "name": "List Onboarding Transcripts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 560]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Load v1 memo from storage + onboarding transcript\nconst { file, account_id } = $input.item.json;\n// In production: read from outputs/accounts/{account_id}/v1/account_memo.json\nreturn [{ json: { account_id, onboarding_file: file, v1_memo: {}, onboarding_transcript: `[Content of ${file}]` } }];"
+      },
+      "id": "load-v1-and-transcript",
+      "name": "Load v1 + Onboarding",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 560]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "model", "value": "llama-3.3-70b-versatile" },
+            {
+              "name": "messages",
+              "value": "={{ [{\"role\":\"system\",\"content\":\"Extract only changes/updates from onboarding transcript vs existing v1 memo. Return JSON diff only.\"},{\"role\":\"user\",\"content\":\"V1 MEMO:\\n\" + JSON.stringify($json.v1_memo) + \"\\n\\nONBOARDING:\\n\" + $json.onboarding_transcript}] }}"
+            },
+            { "name": "max_tokens", "value": 2000 },
+            { "name": "temperature", "value": 0.1 }
+          ]
+        }
+      },
+      "id": "groq-extract-updates",
+      "name": "Groq — Extract Updates",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 560]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Apply patch + generate changelog\nconst updates = $input.item.json;\nconsole.log('Applying v1 -> v2 patch...');\nconst changelog = {\n  version_from: 'v1',\n  version_to: 'v2',\n  generated_at: new Date().toISOString(),\n  changes: updates.choices?.[0]?.message?.content || 'See raw updates'\n};\nreturn [{ json: { status: 'patched', changelog } }];"
+      },
+      "id": "apply-patch-changelog",
+      "name": "Apply Patch + Changelog",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 560]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Save v2 outputs\nconsole.log('Saving v2 outputs...');\nreturn [{ json: { status: 'complete', version: 'v2', saved_at: new Date().toISOString() } }];"
+      },
+      "id": "save-v2-outputs",
+      "name": "Save v2 Outputs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 560]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "List Demo Transcripts", "type": "main", "index": 0 }]]
+    },
+    "List Demo Transcripts": {
+      "main": [[{ "node": "Read Transcript File", "type": "main", "index": 0 }]]
+    },
+    "Read Transcript File": {
+      "main": [[{ "node": "Groq — Extract Account Memo", "type": "main", "index": 0 }]]
+    },
+    "Groq — Extract Account Memo": {
+      "main": [[{ "node": "Parse Memo JSON", "type": "main", "index": 0 }]]
+    },
+    "Parse Memo JSON": {
+      "main": [[{ "node": "Groq — Generate Agent Spec", "type": "main", "index": 0 }]]
+    },
+    "Groq — Generate Agent Spec": {
+      "main": [[{ "node": "Save v1 Outputs + Task", "type": "main", "index": 0 }]]
+    },
+    "Pipeline B Trigger": {
+      "main": [[{ "node": "List Onboarding Transcripts", "type": "main", "index": 0 }]]
+    },
+    "List Onboarding Transcripts": {
+      "main": [[{ "node": "Load v1 + Onboarding", "type": "main", "index": 0 }]]
+    },
+    "Load v1 + Onboarding": {
+      "main": [[{ "node": "Groq — Extract Updates", "type": "main", "index": 0 }]]
+    },
+    "Groq — Extract Updates": {
+      "main": [[{ "node": "Apply Patch + Changelog", "type": "main", "index": 0 }]]
+    },
+    "Apply Patch + Changelog": {
+      "main": [[{ "node": "Save v2 Outputs", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "n8nVersion": "1.30.0"
+  }
+}

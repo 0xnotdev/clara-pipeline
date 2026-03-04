@@ -1,0 +1,31 @@
+ONBOARDING CALL TRANSCRIPT - Account: BRIGHT STAR ELECTRICAL (BSE_002)
+Date: 2024-02-02
+Participants: Onboarding Specialist (Clara), Client: Sandra Okafor
+
+Specialist: Hi Sandra, onboarding call for Bright Star. Let's confirm details and capture any updates.
+
+Sandra: A few things. We changed our office hours — we now close at 4:30pm on Fridays. So Monday to Thursday 8-5, Friday 8-4:30.
+
+Specialist: Updated. Any routing changes?
+
+Sandra: Dave Kowalski's number changed. New number is 720-555-0399. Also we added a second backup: if Dave doesn't answer, try our service coordinator Lisa at 720-555-0355 before the operations line.
+
+Specialist: So new chain is: Dave at 0399, then Lisa at 0355, then operations at 0300?
+
+Sandra: Exactly. Give each one 3 rings.
+
+Specialist: Any changes to emergency definitions?
+
+Sandra: Add "generator failure at a medical facility" — we've been getting those calls and they're definitely emergencies.
+
+Specialist: Jobber constraint still the same?
+
+Sandra: Yes, no creating or canceling jobs. But I want to add — if a caller mentions permit work, note it prominently. Permit jobs need a separate workflow on our end.
+
+Specialist: Anything for the agent greeting?
+
+Sandra: Please say "Bright Star Electrical, licensed and insured in Colorado" — that builds trust with callers.
+
+Specialist: Any other updates?
+
+Sandra: The Denver Metro Hospital escalation still stands. Also add: if anyone from Lakewood General calls, same treatment — escalate to me immediately.

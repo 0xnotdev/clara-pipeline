@@ -1,0 +1,31 @@
+DEMO CALL TRANSCRIPT - Account: BRIGHT STAR ELECTRICAL
+Date: 2024-01-16
+Participants: Sales Rep (Clara), Client: Sandra Okafor (Operations Manager, Bright Star Electrical)
+
+Sales Rep: Hi Sandra, excited to show you what Clara can do. Tell me about Bright Star.
+
+Sandra: We're a commercial and residential electrical contractor in Denver, Colorado. Hours are Monday to Friday, 8am to 5pm Mountain Time. We're closed weekends except for emergency calls.
+
+Sales Rep: How do you define an emergency?
+
+Sandra: Power outage affecting the whole property, exposed or sparking wires, electrical fire smell, or panel issues that cut power to critical equipment. Those are the big ones.
+
+Sales Rep: And who handles emergency routing?
+
+Sandra: First call goes to our lead electrician, Dave Kowalski, at 720-555-0344. If no answer in 3 rings, call our operations line at 720-555-0300. If that also fails, the caller should be told a tech will call back within 30 minutes and we page Dave via our internal system.
+
+Sales Rep: For normal business hours, what should the agent do?
+
+Sandra: Collect name, number, and nature of the job. Then transfer to our front desk at 720-555-0300. If the front desk doesn't answer, take a message and tell them we'll call back within 2 hours.
+
+Sales Rep: Do you have a field management platform?
+
+Sandra: Yes, Jobber. The agent can reference job scheduling but should never create or cancel jobs — that's handled by our team only.
+
+Sales Rep: Office address?
+
+Sandra: 1550 Market Street, Suite 200, Denver CO 80202.
+
+Sales Rep: Any VIP clients or special handling?
+
+Sandra: If someone mentions they're calling from Denver Metro Hospital, escalate immediately to me, Sandra, at 720-555-0411. They're our biggest account.

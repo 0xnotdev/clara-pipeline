@@ -1,0 +1,27 @@
+ONBOARDING CALL TRANSCRIPT - Account: NORDIC HVAC SOLUTIONS (NHS_004)
+Date: 2024-02-04
+Participants: Onboarding Specialist (Clara), Client: Ingrid Halvorsen
+
+Specialist: Hi Ingrid, Nordic HVAC onboarding. Let's finalize everything.
+
+Ingrid: Great. First — we extended hours. We're now open Monday through Friday 6am to 8pm and added Saturday 8am to 4pm.
+
+Specialist: Got it. Emergency routing still through dispatch at 612-555-0500?
+
+Ingrid: Yes, dispatch stays the same. But the callback guarantee changes — we now promise 30 minutes for medical facilities and server rooms, and 60 minutes for all others. Please make that distinction in the script.
+
+Specialist: Clear. Anything new on emergency triggers?
+
+Ingrid: Add: any HVAC failure in a data center. We signed a contract with a colocation facility so those calls are priority one.
+
+Specialist: ServiceTitan constraint still no ticket creation?
+
+Ingrid: Correct. But add: do not quote any prices to callers. Pricing requires an on-site assessment and we've had issues with agents in the past giving ballpark numbers.
+
+Specialist: Understood — no pricing. What about the greeting?
+
+Ingrid: "Nordic HVAC Solutions, commercial comfort specialists." Please use that exact phrasing.
+
+Specialist: Any VIP accounts?
+
+Ingrid: Yes — if the caller identifies as calling from North Memorial Health or Children's Minnesota, immediate escalation to me at 612-555-0200. Those are our anchor hospital accounts.

@@ -1,0 +1,31 @@
+ONBOARDING CALL TRANSCRIPT - Account: GULF COAST ROOFING (GCR_003)
+Date: 2024-02-03
+Participants: Onboarding Specialist (Clara), Client: Tony Marchand
+
+Specialist: Tony, let's confirm your setup for Gulf Coast Roofing.
+
+Tony: Yep. Main thing — Ray got promoted, he's no longer doing emergency on-call. New emergency contact is our crew lead Marcus at 713-555-0310. Same protocol — one attempt, then message.
+
+Specialist: Got it. Marcus at 0310 for emergencies. Hours still the same?
+
+Tony: Change Saturday close to 5pm, not 7. We cut back Saturday hours.
+
+Specialist: So Monday to Friday 7-7, Saturday 7-5?
+
+Tony: Correct.
+
+Specialist: Any new emergency definitions?
+
+Tony: Add "tarp fell off a previously damaged roof" — if that happens in rain, it's an emergency.
+
+Specialist: AccuLynx constraint same?
+
+Tony: Same, don't touch it. But I want the agent to always ask: is this for a residential or commercial property? Always. Every call.
+
+Specialist: For the insurance flag — still in effect?
+
+Tony: Yes. Also add: if they mention hurricane damage specifically, that goes to our storm division. Different team. Just note it clearly in the message.
+
+Specialist: Anything on the greeting?
+
+Tony: Keep it simple: "Gulf Coast Roofing, Houston's trusted roofers." That's fine.

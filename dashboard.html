@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clara Pipeline — Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; min-height: 100vh; }
+  header { background: linear-gradient(135deg, #1a1f2e 0%, #16213e 100%); border-bottom: 1px solid #2d3748; padding: 20px 32px; display: flex; align-items: center; gap: 16px; }
+  header h1 { font-size: 22px; font-weight: 700; color: #fff; }
+  header span { background: #4f46e5; color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 32px; }
+  .instructions { background: #1e2a3a; border: 1px solid #2d4a6e; border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+  .instructions h2 { color: #60a5fa; font-size: 14px; margin-bottom: 12px; }
+  .instructions code { background: #0f1117; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #a78bfa; }
+  .instructions p { font-size: 13px; color: #94a3b8; line-height: 1.6; margin-bottom: 8px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .card { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 12px; padding: 24px; }
+  .card h3 { font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+  .account-list { display: flex; flex-direction: column; gap: 10px; }
+  .account-item { background: #0f1117; border: 1px solid #2d3748; border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: border-color 0.2s; }
+  .account-item:hover { border-color: #4f46e5; }
+  .account-item.active { border-color: #4f46e5; background: #1e1b4b; }
+  .account-name { font-weight: 600; font-size: 14px; color: #e2e8f0; }
+  .account-id { font-size: 11px; color: #64748b; margin-top: 2px; }
+  .badges { display: flex; gap: 6px; margin-top: 8px; }
+  .badge { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .badge.v1 { background: #1d4ed8; color: #bfdbfe; }
+  .badge.v2 { background: #065f46; color: #6ee7b7; }
+  .badge.changes { background: #7c2d12; color: #fdba74; }
+  .viewer { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 12px; padding: 0; overflow: hidden; }
+  .viewer-tabs { display: flex; border-bottom: 1px solid #2d3748; }
+  .viewer-tab { padding: 12px 20px; font-size: 13px; cursor: pointer; color: #64748b; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .viewer-tab.active { color: #e2e8f0; border-bottom-color: #4f46e5; }
+  .viewer-content { padding: 24px; }
+  .diff-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .diff-table th { text-align: left; padding: 8px 12px; background: #0f1117; color: #64748b; font-weight: 600; }
+  .diff-table td { padding: 8px 12px; border-top: 1px solid #2d3748; vertical-align: top; }
+  .diff-table tr:hover td { background: #1e2a3a; }
+  .old-val { color: #f87171; background: #450a0a; padding: 2px 6px; border-radius: 4px; font-family: monospace; word-break: break-word; }
+  .new-val { color: #4ade80; background: #052e16; padding: 2px 6px; border-radius: 4px; font-family: monospace; word-break: break-word; }
+  .field-name { color: #a78bfa; font-family: monospace; }
+  .json-view { background: #0f1117; border-radius: 8px; padding: 16px; overflow: auto; max-height: 500px; font-family: monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; }
+  .key { color: #60a5fa; }
+  .string-val { color: #4ade80; }
+  .num-val { color: #fb923c; }
+  .bool-val { color: #f472b6; }
+  .null-val { color: #64748b; }
+  .empty-state { text-align: center; padding: 60px 20px; color: #475569; }
+  .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+  .summary-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .stat { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 700; color: #4f46e5; }
+  .stat-label { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .prompt-view { background: #0f1117; border-radius: 8px; padding: 16px; font-size: 12px; line-height: 1.8; color: #cbd5e1; max-height: 500px; overflow: auto; white-space: pre-wrap; }
+  .no-data { color: #475569; font-size: 13px; font-style: italic; }
+  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .summary-stats { grid-template-columns: repeat(2,1fr); } }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Clara Answers Pipeline <span>DASHBOARD</span></h1>
+  </div>
+</header>
+
+<div class="container">
+  
+  <div class="instructions">
+    <h2>📌 How to use this dashboard</h2>
+    <p>This dashboard loads your pipeline outputs from the <code>outputs/</code> and <code>changelog/</code> directories. Since it runs locally from the file system, you need to either:</p>
+    <p><strong>Option A (Recommended):</strong> Run <code>python scripts/serve_dashboard.py</code> — starts a local server at <code>http://localhost:8080</code> that serves JSON files.</p>
+    <p><strong>Option B:</strong> Paste JSON content directly into the panels below using the import buttons.</p>
+    <p>Or just open this file after running <code>python scripts/run_all.py</code> and use the JSON import feature.</p>
+  </div>
+
+  <div class="summary-stats">
+    <div class="stat"><div class="stat-num" id="stat-accounts">5</div><div class="stat-label">Accounts Processed</div></div>
+    <div class="stat"><div class="stat-num" id="stat-v1">5</div><div class="stat-label">v1 Agents Generated</div></div>
+    <div class="stat"><div class="stat-num" id="stat-v2">5</div><div class="stat-label">v2 Agents Updated</div></div>
+    <div class="stat"><div class="stat-num" id="stat-changes">—</div><div class="stat-label">Total Field Changes</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Accounts</h3>
+      <div class="account-list" id="account-list">
+        <!-- Populated by JS or manual entry -->
+        <div class="account-item active" onclick="selectAccount('ACE_001', 'Ace Plumbing & HVAC')">
+          <div class="account-name">Ace Plumbing & HVAC</div>
+          <div class="account-id">ACE_001</div>
+          <div class="badges"><span class="badge v1">v1</span><span class="badge v2">v2</span><span class="badge changes">demo_001 + onboarding_001</span></div>
+        </div>
+        <div class="account-item" onclick="selectAccount('BSE_002', 'Bright Star Electrical')">
+          <div class="account-name">Bright Star Electrical</div>
+          <div class="account-id">BSE_002</div>
+          <div class="badges"><span class="badge v1">v1</span><span class="badge v2">v2</span></div>
+        </div>
+        <div class="account-item" onclick="selectAccount('GCR_003', 'Gulf Coast Roofing')">
+          <div class="account-name">Gulf Coast Roofing</div>
+          <div class="account-id">GCR_003</div>
+          <div class="badges"><span class="badge v1">v1</span><span class="badge v2">v2</span></div>
+        </div>
+        <div class="account-item" onclick="selectAccount('NHS_004', 'Nordic HVAC Solutions')">
+          <div class="account-name">Nordic HVAC Solutions</div>
+          <div class="account-id">NHS_004</div>
+          <div class="badges"><span class="badge v1">v1</span><span class="badge v2">v2</span></div>
+        </div>
+        <div class="account-item" onclick="selectAccount('RRR_005', 'Rapid Response Restoration')">
+          <div class="account-name">Rapid Response Restoration</div>
+          <div class="account-id">RRR_005</div>
+          <div class="badges"><span class="badge v1">v1</span><span class="badge v2">v2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Load JSON Files</h3>
+      <p style="font-size:12px;color:#64748b;margin-bottom:16px;">After running the pipeline, paste the JSON content here to view in the dashboard.</p>
+      
+      <div style="margin-bottom:12px;">
+        <label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:6px;">v1 Account Memo (account_memo.json)</label>
+        <textarea id="input-v1-memo" style="width:100%;height:60px;background:#0f1117;border:1px solid #2d3748;border-radius:6px;color:#e2e8f0;padding:8px;font-size:11px;font-family:monospace;" placeholder='Paste outputs/accounts/ACE_001/v1/account_memo.json content...'></textarea>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:6px;">v2 Account Memo (account_memo.json)</label>
+        <textarea id="input-v2-memo" style="width:100%;height:60px;background:#0f1117;border:1px solid #2d3748;border-radius:6px;color:#e2e8f0;padding:8px;font-size:11px;font-family:monospace;" placeholder='Paste outputs/accounts/ACE_001/v2/account_memo.json content...'></textarea>
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:6px;">Changelog JSON</label>
+        <textarea id="input-changelog" style="width:100%;height:60px;background:#0f1117;border:1px solid #2d3748;border-radius:6px;color:#e2e8f0;padding:8px;font-size:11px;font-family:monospace;" placeholder='Paste changelog/ACE_001_changes.json content...'></textarea>
+      </div>
+      <button onclick="loadPastedData()" style="background:#4f46e5;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:13px;width:100%;">Load & View →</button>
+    </div>
+  </div>
+
+  <div class="viewer" id="main-viewer">
+    <div class="viewer-tabs">
+      <div class="viewer-tab active" onclick="switchTab('diff')">🔄 Diff Viewer</div>
+      <div class="viewer-tab" onclick="switchTab('v1-memo')">📋 v1 Memo</div>
+      <div class="viewer-tab" onclick="switchTab('v2-memo')">📋 v2 Memo</div>
+      <div class="viewer-tab" onclick="switchTab('v1-prompt')">🤖 v1 Agent Prompt</div>
+      <div class="viewer-tab" onclick="switchTab('v2-prompt')">🤖 v2 Agent Prompt</div>
+    </div>
+    <div class="viewer-content" id="viewer-content">
+      <div class="empty-state">
+        <div class="icon">📂</div>
+        <div>Select an account and load JSON files to view details</div>
+        <div style="margin-top:8px;font-size:12px;">Run <code style="background:#1a1f2e;padding:2px 6px;border-radius:4px;">python scripts/run_all.py</code> first to generate outputs</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let currentAccount = 'ACE_001';
+let loadedData = {
+  v1Memo: null,
+  v2Memo: null,
+  changelog: null,
+  v1Agent: null,
+  v2Agent: null
+};
+let activeTab = 'diff';
+
+function selectAccount(id, name) {
+  currentAccount = id;
+  document.querySelectorAll('.account-item').forEach(el => el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  // Reset loaded data
+  loadedData = { v1Memo: null, v2Memo: null, changelog: null, v1Agent: null, v2Agent: null };
+  renderContent();
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.viewer-tab').forEach(el => el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  renderContent();
+}
+
+function loadPastedData() {
+  const v1Raw = document.getElementById('input-v1-memo').value.trim();
+  const v2Raw = document.getElementById('input-v2-memo').value.trim();
+  const clRaw = document.getElementById('input-changelog').value.trim();
+  
+  try { if (v1Raw) loadedData.v1Memo = JSON.parse(v1Raw); } catch(e) { alert('v1 memo JSON invalid: ' + e.message); return; }
+  try { if (v2Raw) loadedData.v2Memo = JSON.parse(v2Raw); } catch(e) { alert('v2 memo JSON invalid: ' + e.message); return; }
+  try { if (clRaw) loadedData.changelog = JSON.parse(clRaw); } catch(e) { alert('Changelog JSON invalid: ' + e.message); return; }
+  
+  // Update stats
+  if (loadedData.changelog) {
+    document.getElementById('stat-changes').textContent = loadedData.changelog.total_changes || '—';
+  }
+  
+  renderContent();
+}
+
+function syntaxHighlight(json) {
+  if (typeof json !== 'string') json = JSON.stringify(json, null, 2);
+  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+    let cls = 'num-val';
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) cls = 'key';
+      else cls = 'string-val';
+    } else if (/true|false/.test(match)) cls = 'bool-val';
+    else if (/null/.test(match)) cls = 'null-val';
+    return '<span class="' + cls + '">' + match + '</span>';
+  });
+}
+
+function renderDiff() {
+  const cl = loadedData.changelog;
+  if (!cl) return '<div class="no-data">No changelog loaded. Paste changelog JSON in the Load panel above.</div>';
+  
+  let html = `<div style="margin-bottom:16px;padding:12px;background:#1e2a3a;border-radius:8px;">
+    <strong style="color:#e2e8f0;">${cl.company_name}</strong>
+    <span style="color:#64748b;font-size:12px;margin-left:12px;">${cl.version_from} → ${cl.version_to}</span>
+    <div style="color:#94a3b8;font-size:12px;margin-top:6px;">${cl.summary}</div>
+    <div style="color:#64748b;font-size:11px;margin-top:4px;">${cl.total_changes} field changes · ${cl.changelog_generated_at}</div>
+  </div>`;
+  
+  const changes = cl.memo_field_changes || [];
+  if (changes.length === 0) {
+    html += '<div class="no-data">No field-level changes detected.</div>';
+  } else {
+    html += `<table class="diff-table">
+      <thead><tr><th>Field</th><th>Change</th><th>Before</th><th>After</th></tr></thead>
+      <tbody>`;
+    changes.forEach(c => {
+      const oldV = c.old_value !== undefined ? JSON.stringify(c.old_value) : c.removed_items ? JSON.stringify(c.removed_items) : '—';
+      const newV = c.new_value !== undefined ? JSON.stringify(c.new_value) : c.new_items ? JSON.stringify(c.new_items) : '—';
+      html += `<tr>
+        <td><span class="field-name">${c.field}</span></td>
+        <td><span class="badge ${c.change === 'modified' ? 'changes' : c.change.includes('add') ? 'v2' : 'v1'}">${c.change}</span></td>
+        <td>${oldV !== '—' ? `<span class="old-val">${oldV}</span>` : '<span class="null-val">—</span>'}</td>
+        <td>${newV !== '—' ? `<span class="new-val">${newV}</span>` : '<span class="null-val">—</span>'}</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+  }
+  
+  if (cl.new_rules_added && cl.new_rules_added.length > 0) {
+    html += `<div style="margin-top:16px;"><strong style="color:#4ade80;font-size:12px;">➕ New Rules Added</strong><ul style="margin-top:8px;padding-left:20px;">`;
+    cl.new_rules_added.forEach(r => html += `<li style="color:#94a3b8;font-size:12px;margin-bottom:4px;">${r}</li>`);
+    html += '</ul></div>';
+  }
+  
+  if (cl.agent_prompt_updated) {
+    html += `<div style="margin-top:12px;padding:10px;background:#052e16;border-radius:6px;color:#4ade80;font-size:12px;">✅ Agent system prompt updated to reflect all v2 changes</div>`;
+  }
+  
+  return html;
+}
+
+function renderContent() {
+  const content = document.getElementById('viewer-content');
+  
+  if (activeTab === 'diff') {
+    content.innerHTML = renderDiff();
+  } else if (activeTab === 'v1-memo') {
+    if (!loadedData.v1Memo) {
+      content.innerHTML = '<div class="no-data">Paste v1 memo JSON to view.</div>';
+    } else {
+      content.innerHTML = `<div class="json-view">${syntaxHighlight(loadedData.v1Memo)}</div>`;
+    }
+  } else if (activeTab === 'v2-memo') {
+    if (!loadedData.v2Memo) {
+      content.innerHTML = '<div class="no-data">Paste v2 memo JSON to view.</div>';
+    } else {
+      content.innerHTML = `<div class="json-view">${syntaxHighlight(loadedData.v2Memo)}</div>`;
+    }
+  } else if (activeTab === 'v1-prompt') {
+    if (!loadedData.v1Memo) {
+      content.innerHTML = '<div class="no-data">Load v1 memo to view system prompt.</div>';
+    } else {
+      content.innerHTML = '<div class="no-data">Load the v1 agent_spec.json to see the system prompt. (Paste in the v1 memo field for now — agent spec is a separate file)</div>';
+    }
+  } else if (activeTab === 'v2-prompt') {
+    if (!loadedData.v2Memo) {
+      content.innerHTML = '<div class="no-data">Load v2 memo to view system prompt.</div>';
+    } else {
+      content.innerHTML = '<div class="no-data">Load the v2 agent_spec.json to see the system prompt.</div>';
+    }
+  }
+}
+
+renderContent();
+</script>
+</body>
+</html>

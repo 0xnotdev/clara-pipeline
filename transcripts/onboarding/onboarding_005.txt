@@ -1,0 +1,31 @@
+ONBOARDING CALL TRANSCRIPT - Account: RAPID RESPONSE RESTORATION (RRR_005)
+Date: 2024-02-05
+Participants: Onboarding Specialist (Clara), Client: Jerome Washington
+
+Specialist: Jerome, final onboarding for Rapid Response. Anything changed?
+
+Jerome: A few things. We brought on a new partner so we now also cover Charlotte, NC — not just Atlanta. If a caller is in Charlotte, route to our Charlotte dispatch: 704-555-0700.
+
+Specialist: Got it — Atlanta stays at 404-555-0600, Charlotte at 704-555-0700. How does the agent determine which market?
+
+Jerome: Ask for their city and zip code early in the call. Always.
+
+Specialist: Noted. Any emergency definition changes?
+
+Jerome: Add: biohazard cleanup requests are emergencies. We added a biohazard division.
+
+Specialist: The Xactimate and RMS confidentiality — still in place?
+
+Jerome: Yes, don't mention those tools. But add one more: we now use Encircle for documentation — also don't mention that to callers.
+
+Specialist: What about the insurance flagging?
+
+Jerome: Keep that. But now also: if they say FEMA or federal disaster declaration, that's a separate escalation — call me directly at 404-555-0612.
+
+Specialist: Rental property flag still active?
+
+Jerome: Yes. Also add: if the caller says the property is vacant or abandoned, flag that — different liability situation.
+
+Specialist: Anything on the greeting or script?
+
+Jerome: Change the greeting to include our new tagline: "Rapid Response Restoration, serving Atlanta and Charlotte." Let callers know we've expanded.

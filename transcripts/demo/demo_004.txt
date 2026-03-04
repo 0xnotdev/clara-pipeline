@@ -1,0 +1,27 @@
+DEMO CALL TRANSCRIPT - Account: NORDIC HVAC SOLUTIONS
+Date: 2024-01-18
+Participants: Sales Rep (Clara), Client: Ingrid Halvorsen (CEO, Nordic HVAC Solutions)
+
+Sales Rep: Ingrid, thanks for joining. Tell me about Nordic HVAC.
+
+Ingrid: We specialize in commercial HVAC — office buildings, retail, hospitality. Based in Minneapolis, Minnesota. Our hours are Monday through Friday, 6am to 6pm Central. We have a 24/7 emergency line already but we want Clara to handle the initial triage before routing.
+
+Sales Rep: Smart approach. What qualifies as an emergency?
+
+Ingrid: Complete HVAC failure in a medical facility or server room, refrigeration failure in a restaurant, or any situation where a building's temperature is unsafe for occupants — below 60°F or above 90°F. Also CO alarm triggers.
+
+Sales Rep: Emergency routing?
+
+Ingrid: Step 1: our emergency dispatch at 612-555-0500. Step 2 if no answer: senior tech on-call, rotation changes weekly so the agent should just call dispatch — they have the schedule. Step 3 fallback: leave a voicemail at dispatch AND send a notification. Tell the caller a tech will contact them within 45 minutes.
+
+Sales Rep: Office hours flow?
+
+Ingrid: Transfer to main office 612-555-0100. If busy or no answer, collect: caller name, company name, building address, nature of issue, and urgency level. Call back within 1 business hour.
+
+Sales Rep: Software?
+
+Ingrid: ServiceTitan. Agents should not create tickets. We integrate separately.
+
+Sales Rep: Address?
+
+Ingrid: 200 South 6th Street, Minneapolis MN 55402.

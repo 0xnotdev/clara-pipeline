@@ -1,0 +1,27 @@
+DEMO CALL TRANSCRIPT - Account: GULF COAST ROOFING
+Date: 2024-01-17
+Participants: Sales Rep (Clara), Client: Tony Marchand (Owner, Gulf Coast Roofing)
+
+Sales Rep: Tony, thanks for your time. Walk me through your business operations.
+
+Tony: We're Gulf Coast Roofing out of Houston, Texas. Residential and light commercial. Business hours are Monday through Saturday, 7am to 7pm Central Time. We're actually open pretty late because Houston summers are brutal and people want estimates after work.
+
+Sales Rep: Emergencies?
+
+Tony: Active leak during rain, major storm damage where the structure is exposed, that's really it. We're roofers — most things can wait till morning. Emergencies go to my foreman Ray, 713-555-0277. One attempt. If no answer, take a message and assure them we'll be there first thing in the morning.
+
+Sales Rep: Non-emergency after hours?
+
+Tony: Take a message. Name, number, what kind of roof issue, and whether it's residential or commercial. That last part helps us dispatch the right crew.
+
+Sales Rep: Any software to know about?
+
+Tony: We use AccuLynx for project management. Don't touch it from the agent side. Just collect info and we'll enter it.
+
+Sales Rep: Office location?
+
+Tony: We're mobile honestly, but our main office is 9900 Southwest Freeway, Houston TX 77074.
+
+Sales Rep: Anything else?
+
+Tony: Yeah — if someone mentions insurance claim, flag that specifically in the message. We have a dedicated insurance team and they need to follow up separately.
