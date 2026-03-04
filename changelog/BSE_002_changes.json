@@ -1,0 +1,115 @@
+{
+  "account_id": "BSE_002",
+  "company_name": "Bright Star Electrical",
+  "changelog_generated_at": "2026-03-04T12:02:10.400592",
+  "version_from": "v1",
+  "version_to": "v2",
+  "summary": "Updated office hours, emergency routing rules, and special rules to reflect changes in business operations and client relationships.",
+  "memo_field_changes": [
+    {
+      "field": "after_hours_flow_summary",
+      "change": "modified",
+      "old_value": "Emergency calls are handled according to the emergency routing rules",
+      "new_value": "Emergency calls are handled according to the emergency routing rules, with new contacts and rules"
+    },
+    {
+      "field": "business_hours.end",
+      "change": "modified",
+      "old_value": "5:00 PM",
+      "new_value": "4:30 PM"
+    },
+    {
+      "field": "emergency_definition",
+      "change": "items_added",
+      "new_items": [
+        "generator failure at a medical facility"
+      ]
+    },
+    {
+      "field": "emergency_routing_rules.step_1.phone",
+      "change": "modified",
+      "old_value": "720-555-0344",
+      "new_value": "720-555-0399"
+    },
+    {
+      "field": "emergency_routing_rules.step_2.phone",
+      "change": "modified",
+      "old_value": "720-555-0300",
+      "new_value": "720-555-0355"
+    },
+    {
+      "field": "emergency_routing_rules.step_2.rings_before_next",
+      "change": "modified",
+      "old_value": null,
+      "new_value": 3
+    },
+    {
+      "field": "greeting",
+      "change": "added",
+      "new_value": "Bright Star Electrical, licensed and insured in Colorado"
+    },
+    {
+      "field": "integration_constraints",
+      "change": "items_added",
+      "new_items": [
+        "Cannot create or cancel jobs, note permit work prominently"
+      ]
+    },
+    {
+      "field": "integration_constraints",
+      "change": "items_removed",
+      "removed_items": [
+        "Cannot create or cancel jobs"
+      ]
+    },
+    {
+      "field": "office_hours_flow_summary",
+      "change": "modified",
+      "old_value": "Collect information and transfer to the front desk",
+      "new_value": "Collect information and transfer to the front desk, with updated office hours"
+    },
+    {
+      "field": "special_rules",
+      "change": "items_added",
+      "new_items": [
+        "VIP client: Lakewood General, escalate immediately to Sandra"
+      ]
+    },
+    {
+      "field": "v1_to_v2_changes",
+      "change": "added",
+      "new_value": {
+        "business_hours": {
+          "end": "4:30 PM"
+        },
+        "emergency_routing_rules": {
+          "step_1": {
+            "phone": "720-555-0399"
+          },
+          "step_2": {
+            "phone": "720-555-0355",
+            "rings_before_next": 3
+          }
+        },
+        "emergency_definition": [
+          "generator failure at a medical facility"
+        ],
+        "integration_constraints": [
+          "Cannot create or cancel jobs, note permit work prominently"
+        ],
+        "after_hours_flow_summary": "Emergency calls are handled according to the emergency routing rules, with new contacts and rules",
+        "office_hours_flow_summary": "Collect information and transfer to the front desk, with updated office hours",
+        "special_rules": [
+          "VIP client: Lakewood General, escalate immediately to Sandra"
+        ]
+      }
+    }
+  ],
+  "agent_prompt_updated": true,
+  "new_rules_added": [],
+  "integration_updates": [],
+  "special_rules_updates": [],
+  "greeting_updated": true,
+  "greeting_new_value": "Bright Star Electrical, licensed and insured in Colorado",
+  "total_changes": 12
+}

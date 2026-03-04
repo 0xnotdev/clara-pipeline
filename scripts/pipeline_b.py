@@ -12,7 +12,7 @@ from groq import Groq
 
 # ── Config ──────────────────────────────────────────────────────────────────
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
-MODEL = "llama-3.3-70b-versatile"
+MODEL = "llama-3.1-8b-instant"
 OUTPUT_BASE = Path("outputs/accounts")
 TRANSCRIPTS_DIR = Path("transcripts/onboarding")
 CHANGELOG_DIR = Path("changelog")

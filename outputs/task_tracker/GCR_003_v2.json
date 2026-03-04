@@ -1,0 +1,20 @@
+{
+  "task_id": "TASK-GCR_003-V2",
+  "title": "[V2] Agent updated after onboarding for Gulf Coast Roofing",
+  "account_id": "GCR_003",
+  "status": "ready_for_review",
+  "version": "v2",
+  "created_at": "2026-03-04T12:02:50.504345",
+  "outputs": [
+    "outputs/accounts/GCR_003/v2/account_memo.json",
+    "outputs/accounts/GCR_003/v2/agent_spec.json",
+    "changelog/GCR_003_changes.json",
+    "changelog/GCR_003_changes.md"
+  ],
+  "next_steps": [
+    "Review v2 agent system prompt",
+    "Compare with v1 using diff viewer",
+    "Update agent in Retell UI",
+    "Confirm with client before go-live"
+  ]
+}

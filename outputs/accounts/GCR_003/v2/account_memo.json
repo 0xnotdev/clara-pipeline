@@ -1,0 +1,95 @@
+{
+  "account_id": "GCR_003",
+  "company_name": "Gulf Coast Roofing",
+  "business_hours": {
+    "days": "Monday-Saturday",
+    "start": "7:00 AM",
+    "end": "5:00 PM",
+    "timezone": "Central Time"
+  },
+  "office_address": "9900 Southwest Freeway, Houston TX 77074",
+  "services_supported": [
+    "Residential Roofing",
+    "Light Commercial Roofing"
+  ],
+  "emergency_definition": [
+    "Active leak during rain",
+    "Major storm damage where the structure is exposed",
+    "tarp fell off a previously damaged roof"
+  ],
+  "emergency_routing_rules": {
+    "step_1": {
+      "contact_name": "Ray",
+      "phone": "713-555-0310",
+      "rings_before_next": 1
+    },
+    "step_2": {
+      "contact_name": null,
+      "phone": null,
+      "rings_before_next": null
+    },
+    "fallback": "Take a message and assure them we'll be there first thing in the morning"
+  },
+  "non_emergency_routing_rules": "Take a message with name, number, roof issue, and whether it's residential or commercial",
+  "call_transfer_rules": {
+    "office_hours_transfer_to": null,
+    "timeout_rings": null,
+    "if_no_answer": null,
+    "collect_before_transfer": [
+      "Name",
+      "Number",
+      "Roof Issue",
+      "Residential or Commercial"
+    ]
+  },
+  "integration_constraints": [
+    "Do not touch AccuLynx project management software"
+  ],
+  "after_hours_flow_summary": "Take a message with required information and we'll follow up in the morning",
+  "office_hours_flow_summary": "Route emergencies to Ray, non-emergencies can be handled by taking a message",
+  "special_rules": [
+    "Flag insurance claims for separate follow-up",
+    "Hurricane damage goes to storm division"
+  ],
+  "questions_or_unknowns": [],
+  "notes": "Gulf Coast Roofing has a dedicated insurance team and requires specific information for non-emergency messages",
+  "greeting_update": "Gulf Coast Roofing, Houston's trusted roofers",
+  "v1_to_v2_changes": {
+    "business_hours": {
+      "old_value": {
+        "end": "7:00 PM"
+      },
+      "new_value": {
+        "end": "5:00 PM"
+      },
+      "reason": "Tony Marchand mentioned they cut back Saturday hours"
+    },
+    "emergency_routing_rules.step_1.phone": {
+      "old_value": "713-555-0277",
+      "new_value": "713-555-0310",
+      "reason": "Ray got promoted and Marcus is the new emergency contact"
+    },
+    "emergency_definition": {
+      "old_value": null,
+      "new_value": "tarp fell off a previously damaged roof",
+      "reason": "Tony Marchand added a new emergency definition"
+    },
+    "call_transfer_rules.collect_before_transfer": {
+      "old_value": null,
+      "new_value": "Residential or Commercial",
+      "reason": "Tony Marchand wanted the agent to always ask about residential or commercial property"
+    },
+    "special_rules": {
+      "old_value": "Flag insurance claims for separate follow-up",
+      "new_value": "Flag insurance claims for separate follow-up, Hurricane damage goes to storm division",
+      "reason": "Tony Marchand added a new VIP rule for hurricane damage"
+    }
+  },
+  "_meta": {
+    "version": "v2",
+    "created_at": "2026-03-04T10:39:21.872085",
+    "updated_at": "2026-03-04T12:02:35.413482",
+    "source": "onboarding_call",
+    "pipeline": "pipeline_b"
+  }
+}

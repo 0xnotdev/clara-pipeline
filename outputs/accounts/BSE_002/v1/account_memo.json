@@ -1,0 +1,59 @@
+{
+  "account_id": "BSE_002",
+  "company_name": "Bright Star Electrical",
+  "business_hours": {
+    "days": "Monday-Friday",
+    "start": "8:00 AM",
+    "end": "5:00 PM",
+    "timezone": "Mountain Time"
+  },
+  "office_address": "1550 Market Street, Suite 200, Denver CO 80202",
+  "services_supported": [],
+  "emergency_definition": [
+    "Power outage affecting the whole property",
+    "Exposed or sparking wires",
+    "Electrical fire smell",
+    "Panel issues that cut power to critical equipment"
+  ],
+  "emergency_routing_rules": {
+    "step_1": {
+      "contact_name": "Dave Kowalski",
+      "phone": "720-555-0344",
+      "rings_before_next": 3
+    },
+    "step_2": {
+      "contact_name": null,
+      "phone": "720-555-0300",
+      "rings_before_next": null
+    },
+    "fallback": "Tell the caller a tech will call back within 30 minutes and page Dave via the internal system"
+  },
+  "non_emergency_routing_rules": "Collect name, number, and nature of the job, then transfer to the front desk",
+  "call_transfer_rules": {
+    "office_hours_transfer_to": "Front desk at 720-555-0300",
+    "timeout_rings": null,
+    "if_no_answer": "Take a message and tell them we'll call back within 2 hours",
+    "collect_before_transfer": [
+      "Name",
+      "Number",
+      "Nature of the job"
+    ]
+  },
+  "integration_constraints": [
+    "Jobber field management platform",
+    "Cannot create or cancel jobs"
+  ],
+  "after_hours_flow_summary": "Emergency calls are handled according to the emergency routing rules",
+  "office_hours_flow_summary": "Collect information and transfer to the front desk",
+  "special_rules": [
+    "VIP client: Denver Metro Hospital, escalate immediately to Sandra at 720-555-0411"
+  ],
+  "questions_or_unknowns": [],
+  "notes": "Bright Star Electrical is a commercial and residential electrical contractor in Denver, Colorado",
+  "_meta": {
+    "version": "v1",
+    "created_at": "2026-03-04T10:39:18.192509",
+    "source": "demo_call",
+    "pipeline": "pipeline_a"
+  }
+}

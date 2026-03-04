@@ -1,0 +1,68 @@
+{
+  "account_id": "NHS_004",
+  "company_name": "Nordic HVAC Solutions",
+  "business_hours": {
+    "days": "Monday-Friday, Saturday",
+    "start": "6:00 AM",
+    "end": "8:00 PM",
+    "timezone": "Central Time"
+  },
+  "office_address": "200 South 6th Street, Minneapolis MN 55402",
+  "services_supported": [],
+  "emergency_definition": [
+    "Complete HVAC failure in a medical facility or server room",
+    "Refrigeration failure in a restaurant",
+    "Building temperature is unsafe for occupants (below 60\u00b0F or above 90\u00b0F)",
+    "CO alarm triggers",
+    "Any HVAC failure in a data center"
+  ],
+  "emergency_routing_rules": {
+    "step_1": {
+      "contact_name": "Emergency Dispatch",
+      "phone": "612-555-0500",
+      "rings_before_next": null,
+      "callback_guarantee": "Callback within 30 minutes for medical facilities and server rooms, and 60 minutes for all others"
+    },
+    "step_2": {
+      "contact_name": "Senior Tech On-Call",
+      "phone": null,
+      "rings_before_next": null
+    },
+    "fallback": null
+  },
+  "non_emergency_routing_rules": "Transfer to main office",
+  "call_transfer_rules": {
+    "office_hours_transfer_to": "Main Office 612-555-0100",
+    "timeout_rings": null,
+    "if_no_answer": "Callback within 30 minutes for medical facilities and server rooms, and 60 minutes for all others",
+    "collect_before_transfer": [
+      "Caller name",
+      "Company name",
+      "Building address",
+      "Nature of issue",
+      "Urgency level"
+    ]
+  },
+  "integration_constraints": [
+    "ServiceTitan",
+    "Do not create tickets",
+    "Do not quote any prices to callers"
+  ],
+  "after_hours_flow_summary": "Callers will be routed through the emergency line",
+  "office_hours_flow_summary": "Calls will be transferred to the main office",
+  "special_rules": [
+    "Immediate escalation to Ingrid at 612-555-0200 if caller identifies as calling from North Memorial Health or Children's Minnesota"
+  ],
+  "questions_or_unknowns": [
+    "Senior Tech On-Call phone number"
+  ],
+  "greeting": "Nordic HVAC Solutions, commercial comfort specialists",
+  "notes": "Nordic HVAC Solutions requires initial triage before routing emergency calls",
+  "_meta": {
+    "version": "v2",
+    "created_at": "2026-03-04T10:39:25.221823",
+    "updated_at": "2026-03-04T12:03:25.367593",
+    "source": "onboarding_call",
+    "pipeline": "pipeline_b"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "run_at": "2026-03-04T12:04:22.967211",
+  "model": "llama-3.1-8b-instant",
+  "results": [
+    {
+      "account_id": "ACE_001",
+      "company": "Ace Plumbing and HVAC",
+      "status": "success",
+      "changes": 13
+    },
+    {
+      "account_id": "BSE_002",
+      "company": "Bright Star Electrical",
+      "status": "success",
+      "changes": 12
+    },
+    {
+      "account_id": "GCR_003",
+      "company": "Gulf Coast Roofing",
+      "status": "success",
+      "changes": 6
+    },
+    {
+      "account_id": "NHS_004",
+      "company": "Nordic HVAC Solutions",
+      "status": "success",
+      "changes": 9
+    },
+    {
+      "account_id": "RRR_005",
+      "company": "Rapid Response Restoration",
+      "status": "success",
+      "changes": 8
+    }
+  ]
+}

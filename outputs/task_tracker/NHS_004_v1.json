@@ -1,0 +1,17 @@
+{
+  "task_id": "TASK-NHS_004-V1",
+  "title": "[V1] Agent configured for Nordic HVAC Solutions",
+  "account_id": "NHS_004",
+  "status": "ready_for_review",
+  "version": "v1",
+  "created_at": "2026-03-04T10:39:27.092095",
+  "outputs": [
+    "outputs/accounts/NHS_004/v1/account_memo.json",
+    "outputs/accounts/NHS_004/v1/agent_spec.json"
+  ],
+  "next_steps": [
+    "Review agent system prompt",
+    "Paste into Retell UI or call Retell API",
+    "Schedule onboarding call with client"
+  ]
+}

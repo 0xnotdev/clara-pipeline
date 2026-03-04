@@ -1,0 +1,60 @@
+{
+  "account_id": "ACE_001",
+  "company_name": "Ace Plumbing and HVAC",
+  "business_hours": {
+    "days": "Monday-Friday, Saturday",
+    "start": "7:00 AM",
+    "end": "6:00 PM",
+    "timezone": null
+  },
+  "office_address": "4821 Burnet Road, Austin TX 78756",
+  "services_supported": [
+    "residential plumbing",
+    "HVAC work"
+  ],
+  "emergency_definition": [
+    "burst pipe",
+    "major leak",
+    "sewage backup",
+    "no heat when it's under 40 degrees outside",
+    "AC out when it's over 95"
+  ],
+  "emergency_routing_rules": {
+    "step_1": {
+      "contact_name": "Carlos",
+      "phone": "512-555-0192",
+      "rings_before_next": 2
+    },
+    "step_2": {
+      "contact_name": "Mike",
+      "phone": "512-555-0101",
+      "rings_before_next": null
+    },
+    "fallback": null
+  },
+  "non_emergency_routing_rules": "take a message - name, number, and what it's about",
+  "call_transfer_rules": {
+    "office_hours_transfer_to": null,
+    "timeout_rings": null,
+    "if_no_answer": null,
+    "collect_before_transfer": null
+  },
+  "integration_constraints": [
+    "do not create sprinkler or fire suppression jobs in ServiceTrade"
+  ],
+  "after_hours_flow_summary": "Emergency calls are routed to Carlos then Mike, non-emergency calls are messaged and returned the next morning",
+  "office_hours_flow_summary": null,
+  "special_rules": [
+    "escalate to Mike directly if caller is upset or threatening"
+  ],
+  "questions_or_unknowns": [
+    "timezone for business hours"
+  ],
+  "notes": "Ace Plumbing and HVAC handles residential plumbing and HVAC work, with specific emergency and non-emergency call handling rules",
+  "_meta": {
+    "version": "v1",
+    "created_at": "2026-03-04T10:39:15.224089",
+    "source": "demo_call",
+    "pipeline": "pipeline_a"
+  }
+}

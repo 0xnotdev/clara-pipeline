@@ -1,0 +1,17 @@
+{
+  "task_id": "TASK-ACE_001-V1",
+  "title": "[V1] Agent configured for Ace Plumbing and HVAC",
+  "account_id": "ACE_001",
+  "status": "ready_for_review",
+  "version": "v1",
+  "created_at": "2026-03-04T10:39:17.141312",
+  "outputs": [
+    "outputs/accounts/ACE_001/v1/account_memo.json",
+    "outputs/accounts/ACE_001/v1/agent_spec.json"
+  ],
+  "next_steps": [
+    "Review agent system prompt",
+    "Paste into Retell UI or call Retell API",
+    "Schedule onboarding call with client"
+  ]
+}

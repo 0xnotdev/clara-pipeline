@@ -1,0 +1,61 @@
+{
+  "account_id": "NHS_004",
+  "company_name": "Nordic HVAC Solutions",
+  "business_hours": {
+    "days": "Monday-Friday",
+    "start": "6:00 AM",
+    "end": "6:00 PM",
+    "timezone": "Central Time"
+  },
+  "office_address": "200 South 6th Street, Minneapolis MN 55402",
+  "services_supported": [],
+  "emergency_definition": [
+    "Complete HVAC failure in a medical facility or server room",
+    "Refrigeration failure in a restaurant",
+    "Building temperature is unsafe for occupants (below 60\u00b0F or above 90\u00b0F)",
+    "CO alarm triggers"
+  ],
+  "emergency_routing_rules": {
+    "step_1": {
+      "contact_name": "Emergency Dispatch",
+      "phone": "612-555-0500",
+      "rings_before_next": null
+    },
+    "step_2": {
+      "contact_name": "Senior Tech On-Call",
+      "phone": null,
+      "rings_before_next": null
+    },
+    "fallback": "Leave a voicemail at dispatch and send a notification"
+  },
+  "non_emergency_routing_rules": "Transfer to main office",
+  "call_transfer_rules": {
+    "office_hours_transfer_to": "Main Office 612-555-0100",
+    "timeout_rings": null,
+    "if_no_answer": "Collect caller information and call back within 1 business hour",
+    "collect_before_transfer": [
+      "Caller name",
+      "Company name",
+      "Building address",
+      "Nature of issue",
+      "Urgency level"
+    ]
+  },
+  "integration_constraints": [
+    "ServiceTitan",
+    "Do not create tickets"
+  ],
+  "after_hours_flow_summary": "Callers will be routed through the emergency line",
+  "office_hours_flow_summary": "Calls will be transferred to the main office",
+  "special_rules": [],
+  "questions_or_unknowns": [
+    "Senior Tech On-Call phone number"
+  ],
+  "notes": "Nordic HVAC Solutions requires initial triage before routing emergency calls",
+  "_meta": {
+    "version": "v1",
+    "created_at": "2026-03-04T10:39:25.221823",
+    "source": "demo_call",
+    "pipeline": "pipeline_a"
+  }
+}
