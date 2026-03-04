@@ -7,7 +7,7 @@
     "end": "6:00 PM",
     "timezone": "Eastern"
   },
-  "office_address": "now also covers Charlotte, NC",
+  "office_address": "Expanded to serve Charlotte, NC",
   "services_supported": [
     "water damage",
     "fire damage",
@@ -22,7 +22,7 @@
   ],
   "emergency_routing_rules": {
     "step_1": {
-      "contact_name": "dispatch (Atlanta) or Charlotte dispatch",
+      "contact_name": "dispatch",
       "phone": "404-555-0600 (Atlanta) or 704-555-0700 (Charlotte)",
       "rings_before_next": 2
     },
@@ -48,43 +48,45 @@
     ]
   },
   "integration_constraints": [
-    "do not reference Xactimate to callers",
-    "do not reference RMS to callers",
-    "do not reference Encircle to callers"
+    "Xactimate",
+    "RMS",
+    "Encircle"
   ],
-  "after_hours_flow_summary": "Take emergency calls around the clock and non-emergency calls with detailed info for callback within 2 hours",
-  "office_hours_flow_summary": "Office team available Monday through Friday 8am to 6pm Eastern for non-emergency calls",
+  "after_hours_flow_summary": "Take detailed info and call back within 2 hours for non-emergencies, route emergencies to dispatch line",
+  "office_hours_flow_summary": "Office team available to handle calls during business hours",
   "special_rules": [
     "flag if caller mentions insurance",
-    "note if caller says it's a rental property",
-    "flag if caller says the property is vacant or abandoned",
-    "call Jerome directly at 404-555-0612 if caller says FEMA or federal disaster declaration"
+    "note if rental property",
+    "flag if property is vacant or abandoned"
   ],
   "questions_or_unknowns": [],
-  "notes": "Rapid Response Restoration handles water damage, fire damage, and mold remediation in the Atlanta metro area with 24/7 emergency calls",
-  "greeting": "Rapid Response Restoration, serving Atlanta and Charlotte",
-  "v1_to_v2_changes": {
-    "added": [
-      "ask for city and zip code early in the call to determine market",
-      "flag if caller says the property is vacant or abandoned",
-      "call Jerome directly at 404-555-0612 if caller says FEMA or federal disaster declaration"
-    ],
-    "updated": [
-      "office_address",
-      "emergency_routing_rules.step_1.phone",
-      "emergency_routing_rules.step_1.contact_name",
-      "emergency_definition",
-      "integration_constraints",
-      "special_rules",
-      "greeting"
-    ],
-    "removed": []
-  },
+  "greeting": "Rapid Response Restoration, serving Atlanta and Charlotte.",
+  "notes": "Rapid Response Restoration handles water damage, fire damage, and mold remediation in the Atlanta metro area",
   "_meta": {
     "version": "v2",
-    "created_at": "2026-03-04T10:39:28.332875",
-    "updated_at": "2026-03-04T12:04:08.793681",
+    "created_at": "2026-03-04T22:35:42.365620",
+    "updated_at": "2026-03-04T22:39:03.130041",
     "source": "onboarding_call",
     "pipeline": "pipeline_b"
-  }
+  },
+  "v1_to_v2_changes": {
+    "office_address": "Expanded to serve Charlotte, NC",
+    "emergency_routing_rules.step_1.phone": "404-555-0600 (Atlanta) or 704-555-0700 (Charlotte)",
+    "emergency_definition": [
+      "biohazard cleanup requests"
+    ],
+    "integration_constraints": [
+      "Encircle"
+    ],
+    "special_rules": [
+      "flag if property is vacant or abandoned"
+    ],
+    "greeting": "Rapid Response Restoration, serving Atlanta and Charlotte.",
+    "summary": "Rapid Response Restoration expanded to serve Charlotte, NC, and updated emergency routing, definitions, and special rules to accommodate the new market and services."
+  },
+  "new_rules_added": [
+    "Ask for city and zip code early in the call to determine market",
+    "If caller says FEMA or federal disaster declaration, escalate to Jerome directly",
+    "If caller says property is vacant or abandoned, flag as different liability situation"
+  ]
 }

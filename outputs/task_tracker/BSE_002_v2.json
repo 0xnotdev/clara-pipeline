@@ -4,7 +4,7 @@
   "account_id": "BSE_002",
   "status": "ready_for_review",
   "version": "v2",
-  "created_at": "2026-03-04T12:02:10.407699",
+  "created_at": "2026-03-04T22:37:11.034654",
   "outputs": [
     "outputs/accounts/BSE_002/v2/account_memo.json",
     "outputs/accounts/BSE_002/v2/agent_spec.json",

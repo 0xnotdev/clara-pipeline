@@ -41,7 +41,7 @@
   },
   "integration_constraints": [
     "Jobber field management platform",
-    "Cannot create or cancel jobs"
+    "Do not create or cancel jobs"
   ],
   "after_hours_flow_summary": "Emergency calls are handled according to the emergency routing rules",
   "office_hours_flow_summary": "Collect information and transfer to the front desk",
@@ -49,10 +49,10 @@
     "VIP client: Denver Metro Hospital, escalate immediately to Sandra at 720-555-0411"
   ],
   "questions_or_unknowns": [],
-  "notes": "Bright Star Electrical is a commercial and residential electrical contractor in Denver, Colorado",
+  "notes": "Bright Star Electrical is a commercial and residential electrical contractor with specific emergency and non-emergency handling procedures",
   "_meta": {
     "version": "v1",
-    "created_at": "2026-03-04T10:39:18.192509",
+    "created_at": "2026-03-04T22:35:32.422173",
     "source": "demo_call",
     "pipeline": "pipeline_a"
   }

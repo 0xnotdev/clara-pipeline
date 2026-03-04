@@ -2,19 +2,19 @@
   "account_id": "BSE_002",
   "company_name": "Bright Star Electrical",
   "business_hours": {
-    "days": "Monday-Friday",
+    "days": "Monday-Thursday, 8:00 AM - 5:00 PM, Friday, 8:00 AM - 4:30 PM",
     "start": "8:00 AM",
-    "end": "4:30 PM",
+    "end": "5:00 PM",
     "timezone": "Mountain Time"
   },
   "office_address": "1550 Market Street, Suite 200, Denver CO 80202",
   "services_supported": [],
-  "emergency_definition": [
+  "emergency_definitions": [
     "Power outage affecting the whole property",
     "Exposed or sparking wires",
     "Electrical fire smell",
     "Panel issues that cut power to critical equipment",
-    "generator failure at a medical facility"
+    "Generator failure at a medical facility"
   ],
   "emergency_routing_rules": {
     "step_1": {
@@ -27,7 +27,7 @@
       "phone": "720-555-0355",
       "rings_before_next": 3
     },
-    "fallback": "Tell the caller a tech will call back within 30 minutes and page Dave via the internal system"
+    "fallback": "Same as before"
   },
   "non_emergency_routing_rules": "Collect name, number, and nature of the job, then transfer to the front desk",
   "call_transfer_rules": {
@@ -42,47 +42,96 @@
   },
   "integration_constraints": [
     "Jobber field management platform",
-    "Cannot create or cancel jobs, note permit work prominently"
+    "Do not create or cancel jobs",
+    "Note permit work prominently"
   ],
-  "after_hours_flow_summary": "Emergency calls are handled according to the emergency routing rules, with new contacts and rules",
-  "office_hours_flow_summary": "Collect information and transfer to the front desk, with updated office hours",
+  "after_hours_flow_summary": "Emergency calls are handled according to the emergency routing rules",
+  "office_hours_flow_summary": "Collect information and transfer to the front desk",
+  "greeting": "Bright Star Electrical, licensed and insured in Colorado",
   "special_rules": [
     "VIP client: Denver Metro Hospital, escalate immediately to Sandra at 720-555-0411",
     "VIP client: Lakewood General, escalate immediately to Sandra"
   ],
   "questions_or_unknowns": [],
-  "notes": "Bright Star Electrical is a commercial and residential electrical contractor in Denver, Colorado",
-  "greeting": "Bright Star Electrical, licensed and insured in Colorado",
-  "v1_to_v2_changes": {
-    "business_hours": {
-      "end": "4:30 PM"
-    },
-    "emergency_routing_rules": {
-      "step_1": {
-        "phone": "720-555-0399"
-      },
-      "step_2": {
-        "phone": "720-555-0355",
-        "rings_before_next": 3
-      }
-    },
-    "emergency_definition": [
-      "generator failure at a medical facility"
-    ],
-    "integration_constraints": [
-      "Cannot create or cancel jobs, note permit work prominently"
-    ],
-    "after_hours_flow_summary": "Emergency calls are handled according to the emergency routing rules, with new contacts and rules",
-    "office_hours_flow_summary": "Collect information and transfer to the front desk, with updated office hours",
-    "special_rules": [
-      "VIP client: Lakewood General, escalate immediately to Sandra"
-    ]
-  },
+  "notes": "Bright Star Electrical is a commercial and residential electrical contractor with specific emergency and non-emergency handling procedures",
   "_meta": {
     "version": "v2",
-    "created_at": "2026-03-04T10:39:18.192509",
-    "updated_at": "2026-03-04T12:01:55.058460",
+    "created_at": "2026-03-04T22:35:32.422173",
+    "updated_at": "2026-03-04T22:36:52.692024",
     "source": "onboarding_call",
     "pipeline": "pipeline_b"
-  }
+  },
+  "v1_to_v2_changes": [
+    {
+      "field": "business_hours",
+      "old_value": "Monday-Friday, 8:00 AM - 5:00 PM",
+      "new_value": "Monday-Thursday, 8:00 AM - 5:00 PM, Friday, 8:00 AM - 4:30 PM",
+      "reason": "Office hours updated to reflect new closing time on Fridays"
+    },
+    {
+      "field": "emergency_routing_rules.step_1.phone",
+      "old_value": "720-555-0344",
+      "new_value": "720-555-0399",
+      "reason": "Dave Kowalski's phone number changed"
+    },
+    {
+      "field": "emergency_routing_rules.step_2.phone",
+      "old_value": null,
+      "new_value": "720-555-0355",
+      "reason": "New backup contact added"
+    },
+    {
+      "field": "emergency_routing_rules.step_2.rings_before_next",
+      "old_value": null,
+      "new_value": 3,
+      "reason": "New backup contact added"
+    },
+    {
+      "field": "emergency_definitions",
+      "old_value": [
+        "Power outage affecting the whole property",
+        "Exposed or sparking wires",
+        "Electrical fire smell",
+        "Panel issues that cut power to critical equipment"
+      ],
+      "new_value": [
+        "Power outage affecting the whole property",
+        "Exposed or sparking wires",
+        "Electrical fire smell",
+        "Panel issues that cut power to critical equipment",
+        "Generator failure at a medical facility"
+      ],
+      "reason": "New emergency definition added"
+    },
+    {
+      "field": "integration_constraints",
+      "old_value": [
+        "Jobber field management platform",
+        "Do not create or cancel jobs"
+      ],
+      "new_value": [
+        "Jobber field management platform",
+        "Do not create or cancel jobs",
+        "Note permit work prominently"
+      ],
+      "reason": "New constraint added"
+    },
+    {
+      "field": "greeting",
+      "old_value": null,
+      "new_value": "Bright Star Electrical, licensed and insured in Colorado",
+      "reason": "New agent greeting added"
+    },
+    {
+      "field": "special_rules",
+      "old_value": [
+        "VIP client: Denver Metro Hospital, escalate immediately to Sandra at 720-555-0411"
+      ],
+      "new_value": [
+        "VIP client: Denver Metro Hospital, escalate immediately to Sandra at 720-555-0411",
+        "VIP client: Lakewood General, escalate immediately to Sandra"
+      ],
+      "reason": "New VIP client added"
+    }
+  ]
 }

@@ -1,29 +1,43 @@
 {
   "account_id": "BSE_002",
   "company_name": "Bright Star Electrical",
-  "changelog_generated_at": "2026-03-04T12:02:10.400592",
+  "changelog_generated_at": "2026-03-04T22:37:11.029823",
   "version_from": "v1",
   "version_to": "v2",
-  "summary": "Updated office hours, emergency routing rules, and special rules to reflect changes in business operations and client relationships.",
+  "summary": "Updated office hours, emergency routing rules, emergency definitions, integration constraints, and agent greeting. Added new VIP client for Lakewood General.",
   "memo_field_changes": [
     {
-      "field": "after_hours_flow_summary",
+      "field": "business_hours.days",
       "change": "modified",
-      "old_value": "Emergency calls are handled according to the emergency routing rules",
-      "new_value": "Emergency calls are handled according to the emergency routing rules, with new contacts and rules"
-    },
-    {
-      "field": "business_hours.end",
-      "change": "modified",
-      "old_value": "5:00 PM",
-      "new_value": "4:30 PM"
+      "old_value": "Monday-Friday",
+      "new_value": "Monday-Thursday, 8:00 AM - 5:00 PM, Friday, 8:00 AM - 4:30 PM"
     },
     {
       "field": "emergency_definition",
-      "change": "items_added",
-      "new_items": [
-        "generator failure at a medical facility"
+      "change": "removed",
+      "old_value": [
+        "Power outage affecting the whole property",
+        "Exposed or sparking wires",
+        "Electrical fire smell",
+        "Panel issues that cut power to critical equipment"
       ]
+    },
+    {
+      "field": "emergency_definitions",
+      "change": "added",
+      "new_value": [
+        "Power outage affecting the whole property",
+        "Exposed or sparking wires",
+        "Electrical fire smell",
+        "Panel issues that cut power to critical equipment",
+        "Generator failure at a medical facility"
+      ]
+    },
+    {
+      "field": "emergency_routing_rules.fallback",
+      "change": "modified",
+      "old_value": "Tell the caller a tech will call back within 30 minutes and page Dave via the internal system",
+      "new_value": "Same as before"
     },
     {
       "field": "emergency_routing_rules.step_1.phone",
@@ -52,21 +66,8 @@
       "field": "integration_constraints",
       "change": "items_added",
       "new_items": [
-        "Cannot create or cancel jobs, note permit work prominently"
+        "Note permit work prominently"
       ]
-    },
-    {
-      "field": "integration_constraints",
-      "change": "items_removed",
-      "removed_items": [
-        "Cannot create or cancel jobs"
-      ]
-    },
-    {
-      "field": "office_hours_flow_summary",
-      "change": "modified",
-      "old_value": "Collect information and transfer to the front desk",
-      "new_value": "Collect information and transfer to the front desk, with updated office hours"
     },
     {
       "field": "special_rules",
@@ -78,38 +79,88 @@
     {
       "field": "v1_to_v2_changes",
       "change": "added",
-      "new_value": {
-        "business_hours": {
-          "end": "4:30 PM"
+      "new_value": [
+        {
+          "field": "business_hours",
+          "old_value": "Monday-Friday, 8:00 AM - 5:00 PM",
+          "new_value": "Monday-Thursday, 8:00 AM - 5:00 PM, Friday, 8:00 AM - 4:30 PM",
+          "reason": "Office hours updated to reflect new closing time on Fridays"
         },
-        "emergency_routing_rules": {
-          "step_1": {
-            "phone": "720-555-0399"
-          },
-          "step_2": {
-            "phone": "720-555-0355",
-            "rings_before_next": 3
-          }
+        {
+          "field": "emergency_routing_rules.step_1.phone",
+          "old_value": "720-555-0344",
+          "new_value": "720-555-0399",
+          "reason": "Dave Kowalski's phone number changed"
         },
-        "emergency_definition": [
-          "generator failure at a medical facility"
-        ],
-        "integration_constraints": [
-          "Cannot create or cancel jobs, note permit work prominently"
-        ],
-        "after_hours_flow_summary": "Emergency calls are handled according to the emergency routing rules, with new contacts and rules",
-        "office_hours_flow_summary": "Collect information and transfer to the front desk, with updated office hours",
-        "special_rules": [
-          "VIP client: Lakewood General, escalate immediately to Sandra"
-        ]
-      }
+        {
+          "field": "emergency_routing_rules.step_2.phone",
+          "old_value": null,
+          "new_value": "720-555-0355",
+          "reason": "New backup contact added"
+        },
+        {
+          "field": "emergency_routing_rules.step_2.rings_before_next",
+          "old_value": null,
+          "new_value": 3,
+          "reason": "New backup contact added"
+        },
+        {
+          "field": "emergency_definitions",
+          "old_value": [
+            "Power outage affecting the whole property",
+            "Exposed or sparking wires",
+            "Electrical fire smell",
+            "Panel issues that cut power to critical equipment"
+          ],
+          "new_value": [
+            "Power outage affecting the whole property",
+            "Exposed or sparking wires",
+            "Electrical fire smell",
+            "Panel issues that cut power to critical equipment",
+            "Generator failure at a medical facility"
+          ],
+          "reason": "New emergency definition added"
+        },
+        {
+          "field": "integration_constraints",
+          "old_value": [
+            "Jobber field management platform",
+            "Do not create or cancel jobs"
+          ],
+          "new_value": [
+            "Jobber field management platform",
+            "Do not create or cancel jobs",
+            "Note permit work prominently"
+          ],
+          "reason": "New constraint added"
+        },
+        {
+          "field": "greeting",
+          "old_value": null,
+          "new_value": "Bright Star Electrical, licensed and insured in Colorado",
+          "reason": "New agent greeting added"
+        },
+        {
+          "field": "special_rules",
+          "old_value": [
+            "VIP client: Denver Metro Hospital, escalate immediately to Sandra at 720-555-0411"
+          ],
+          "new_value": [
+            "VIP client: Denver Metro Hospital, escalate immediately to Sandra at 720-555-0411",
+            "VIP client: Lakewood General, escalate immediately to Sandra"
+          ],
+          "reason": "New VIP client added"
+        }
+      ]
     }
   ],
   "agent_prompt_updated": true,
   "new_rules_added": [],
   "integration_updates": [],
-  "special_rules_updates": [],
+  "special_rules_updates": [
+    "VIP client: Lakewood General, escalate immediately to Sandra"
+  ],
   "greeting_updated": true,
   "greeting_new_value": "Bright Star Electrical, licensed and insured in Colorado",
-  "total_changes": 12
+  "total_changes": 11
 }

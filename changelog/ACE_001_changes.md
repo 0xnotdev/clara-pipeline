@@ -2,23 +2,18 @@
 
 **Version:** v1 → v2
 
-**Date:** 2026-03-04T12:01:29.734691
+**Date:** 2026-03-04T22:36:22.412223
 
-**Summary:** Updated emergency routing to Mike as the sole contact, added Sunday hours, updated emergency definitions, and added new ServiceTrade constraints and routing rules.
+**Summary:** Updated emergency routing to Mike as the sole contact, added Sunday hours, updated emergency definitions, and added new ServiceTrade constraints. Also updated the agent greeting and added a new special rule for new construction project estimates.
 
-## Changes (13 field changes)
-
-### `after_hours_flow_summary`
-- **Before:** `Emergency calls are routed to Carlos then Mike, non-emergency calls are messaged and returned the next morning`
-- **After:** `Emergency calls are routed to Mike, non-emergency calls are messaged and returned the next morning`
+## Changes (9 field changes)
 
 ### `business_hours.days`
 - **Before:** `Monday-Friday, Saturday`
 - **After:** `Monday-Sunday`
 
-### `call_transfer_rules.if_no_answer`
-- **Before:** `None`
-- **After:** `take their info and tell them we'll have our estimator, Paula, call them back`
+### `call_transfer_rules.collect_before_transfer`
+- **Added:** `['project type']`
 
 ### `emergency_definition`
 - **Added:** `['gas smell']`
@@ -31,26 +26,17 @@
 - **Before:** `512-555-0192`
 - **After:** `512-555-0101`
 
-### `greeting_update`
-- **Added:** `Ace Plumbing and HVAC, serving Austin since 1998`
-
 ### `integration_constraints`
 - **Added:** `['do not create sprinkler jobs in ServiceTrade', 'do not create gas line estimates in ServiceTrade']`
 
 ### `integration_constraints`
 - **Removed:** `['do not create sprinkler or fire suppression jobs in ServiceTrade']`
 
-### `new_rules_added`
+### `special_rules`
 - **Added:** `["If someone specifically asks for an estimate for a new construction project, take their info and tell them we'll have our estimator, Paula, call them back."]`
 
-### `special_rules_updates`
-- **Added:** `['escalate to Mike directly if caller is upset or threatening']`
-
-### `summary`
-- **Added:** `Updated emergency routing to Mike as the sole contact, added Sunday hours, updated emergency definitions, and added new ServiceTrade constraints and routing rules.`
-
 ### `v1_to_v2_changes`
-- **Added:** `{'emergency_routing_rules': 'Updated emergency routing to Mike as the sole contact', 'business_hours': 'Added Sunday hours', 'emergency_definition': "Added 'gas smell' to emergency definition list", 'integration_constraints': 'Added constraint to never create gas line estimates in ServiceTrade', 'call_transfer_rules': 'Added new routing rule for new construction project estimates'}`
+- **Added:** `{'added': ['Sunday hours', 'new ServiceTrade constraint: do not create gas line estimates', 'new special rule: new construction project estimates', 'new greeting: Ace Plumbing and HVAC, serving Austin since 1998'], 'updated': ['emergency routing rules', 'emergency definitions', 'integration constraints', 'greeting', 'special rules'], 'removed': ['Carlos as emergency contact', 'step_2 in emergency routing rules', "collect_before_transfer: what it's about"]}`
 
 ## New Rules Added
 - If someone specifically asks for an estimate for a new construction project, take their info and tell them we'll have our estimator, Paula, call them back.

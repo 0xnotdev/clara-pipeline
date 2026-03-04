@@ -37,23 +37,27 @@
     "office_hours_transfer_to": null,
     "timeout_rings": null,
     "if_no_answer": null,
-    "collect_before_transfer": null
+    "collect_before_transfer": [
+      "name",
+      "number",
+      "what it's about"
+    ]
   },
   "integration_constraints": [
     "do not create sprinkler or fire suppression jobs in ServiceTrade"
   ],
-  "after_hours_flow_summary": "Emergency calls are routed to Carlos then Mike, non-emergency calls are messaged and returned the next morning",
+  "after_hours_flow_summary": "Emergency calls are routed to on-call tech, non-emergency calls are taken as messages",
   "office_hours_flow_summary": null,
   "special_rules": [
-    "escalate to Mike directly if caller is upset or threatening"
+    "escalate to Mike directly if caller is really upset or threatening"
   ],
   "questions_or_unknowns": [
-    "timezone for business hours"
+    "timezone"
   ],
   "notes": "Ace Plumbing and HVAC handles residential plumbing and HVAC work, with specific emergency and non-emergency call handling rules",
   "_meta": {
     "version": "v1",
-    "created_at": "2026-03-04T10:39:15.224089",
+    "created_at": "2026-03-04T22:35:29.031550",
     "source": "demo_call",
     "pipeline": "pipeline_a"
   }

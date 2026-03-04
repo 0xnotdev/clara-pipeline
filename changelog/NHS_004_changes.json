@@ -1,10 +1,10 @@
 {
   "account_id": "NHS_004",
   "company_name": "Nordic HVAC Solutions",
-  "changelog_generated_at": "2026-03-04T12:03:38.248539",
+  "changelog_generated_at": "2026-03-04T22:38:34.078885",
   "version_from": "v1",
   "version_to": "v2",
-  "summary": "Extended business hours, updated emergency routing rules, added new emergency trigger for data center failures, and updated greeting text.",
+  "summary": "Extended business hours, updated emergency routing rules, added new emergency trigger, and new integration constraints. Also updated greeting text and added VIP account escalation rule.",
   "memo_field_changes": [
     {
       "field": "business_hours.days",
@@ -16,63 +16,81 @@
       "field": "business_hours.end",
       "change": "modified",
       "old_value": "6:00 PM",
-      "new_value": "8:00 PM"
+      "new_value": [
+        "6:00 PM",
+        "4:00 PM"
+      ]
     },
     {
-      "field": "call_transfer_rules.if_no_answer",
+      "field": "call_transfer_rules.office_hours_transfer_to",
       "change": "modified",
-      "old_value": "Collect caller information and call back within 1 business hour",
-      "new_value": "Callback within 30 minutes for medical facilities and server rooms, and 60 minutes for all others"
+      "old_value": "Main Office 612-555-0100",
+      "new_value": "Nordic HVAC Solutions, commercial comfort specialists"
     },
     {
       "field": "emergency_definition",
       "change": "items_added",
       "new_items": [
-        "Any HVAC failure in a data center"
+        "HVAC failure in a data center"
       ]
-    },
-    {
-      "field": "emergency_routing_rules.fallback",
-      "change": "modified",
-      "old_value": "Leave a voicemail at dispatch and send a notification",
-      "new_value": null
     },
     {
       "field": "emergency_routing_rules.step_1.callback_guarantee",
       "change": "added",
-      "new_value": "Callback within 30 minutes for medical facilities and server rooms, and 60 minutes for all others"
-    },
-    {
-      "field": "greeting",
-      "change": "added",
-      "new_value": "Nordic HVAC Solutions, commercial comfort specialists"
+      "new_value": {
+        "medical_facilities_and_server_rooms": "30 minutes",
+        "all_others": "60 minutes"
+      }
     },
     {
       "field": "integration_constraints",
       "change": "items_added",
       "new_items": [
-        "Do not quote any prices to callers"
+        "Do not quote prices to callers"
       ]
     },
     {
       "field": "special_rules",
       "change": "items_added",
       "new_items": [
-        "Immediate escalation to Ingrid at 612-555-0200 if caller identifies as calling from North Memorial Health or Children's Minnesota"
+        {
+          "caller_id": "North Memorial Health or Children's Minnesota",
+          "escalation_contact": "Ingrid Halvorsen, 612-555-0200"
+        }
       ]
+    },
+    {
+      "field": "v1_to_v2_changes",
+      "change": "added",
+      "new_value": {
+        "added": [
+          "HVAC failure in a data center as emergency trigger",
+          "Do not quote prices to callers",
+          "Nordic HVAC Solutions, commercial comfort specialists",
+          "North Memorial Health or Children's Minnesota as VIP accounts"
+        ],
+        "updated": [
+          "business hours",
+          "emergency routing rules",
+          "emergency definition",
+          "integration constraints",
+          "greeting text",
+          "special rules"
+        ]
+      }
     }
   ],
   "agent_prompt_updated": true,
   "new_rules_added": [
-    "Immediate escalation to Ingrid at 612-555-0200 if caller identifies as calling from North Memorial Health or Children's Minnesota"
+    "HVAC failure in a data center as emergency trigger"
   ],
   "integration_updates": [
-    "Do not quote any prices to callers"
+    "Do not quote prices to callers"
   ],
   "special_rules_updates": [
-    "Immediate escalation to Ingrid at 612-555-0200 if caller identifies as calling from North Memorial Health or Children's Minnesota"
+    "North Memorial Health or Children's Minnesota as VIP accounts"
   ],
   "greeting_updated": true,
   "greeting_new_value": "Nordic HVAC Solutions, commercial comfort specialists",
-  "total_changes": 9
+  "total_changes": 8
 }

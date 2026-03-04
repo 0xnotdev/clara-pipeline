@@ -1,10 +1,10 @@
 {
   "account_id": "GCR_003",
   "company_name": "Gulf Coast Roofing",
-  "changelog_generated_at": "2026-03-04T12:02:50.499699",
+  "changelog_generated_at": "2026-03-04T22:37:51.990783",
   "version_from": "v1",
   "version_to": "v2",
-  "summary": "Gulf Coast Roofing updated their business hours, emergency contact, and special rules, including a new VIP rule for hurricane damage.",
+  "summary": "Gulf Coast Roofing updated their business hours, emergency contact, emergency definitions, and added new rules for residential/commercial properties and hurricane damage. They also updated their greeting and added a new VIP rule.",
   "memo_field_changes": [
     {
       "field": "business_hours.end",
@@ -26,15 +26,24 @@
       "new_value": "713-555-0310"
     },
     {
-      "field": "greeting_update",
+      "field": "greeting",
       "change": "added",
       "new_value": "Gulf Coast Roofing, Houston's trusted roofers"
+    },
+    {
+      "field": "new_rules_added",
+      "change": "added",
+      "new_value": [
+        "is this for a residential or commercial property? Always. Every call.",
+        "if they mention hurricane damage specifically, that goes to our storm division"
+      ]
     },
     {
       "field": "special_rules",
       "change": "items_added",
       "new_items": [
-        "Hurricane damage goes to storm division"
+        "is this for a residential or commercial property? Always. Every call.",
+        "if they mention hurricane damage specifically, that goes to our storm division"
       ]
     },
     {
@@ -42,12 +51,8 @@
       "change": "added",
       "new_value": {
         "business_hours": {
-          "old_value": {
-            "end": "7:00 PM"
-          },
-          "new_value": {
-            "end": "5:00 PM"
-          },
+          "old_value": "7:00 PM",
+          "new_value": "5:00 PM",
           "reason": "Tony Marchand mentioned they cut back Saturday hours"
         },
         "emergency_routing_rules.step_1.phone": {
@@ -56,32 +61,34 @@
           "reason": "Ray got promoted and Marcus is the new emergency contact"
         },
         "emergency_definition": {
-          "old_value": null,
+          "old_value": "null",
           "new_value": "tarp fell off a previously damaged roof",
           "reason": "Tony Marchand added a new emergency definition"
         },
         "call_transfer_rules.collect_before_transfer": {
-          "old_value": null,
+          "old_value": "null",
           "new_value": "Residential or Commercial",
           "reason": "Tony Marchand wanted the agent to always ask about residential or commercial property"
         },
         "special_rules": {
-          "old_value": "Flag insurance claims for separate follow-up",
-          "new_value": "Flag insurance claims for separate follow-up, Hurricane damage goes to storm division",
-          "reason": "Tony Marchand added a new VIP rule for hurricane damage"
+          "old_value": "null",
+          "new_value": "if they mention hurricane damage specifically, that goes to our storm division",
+          "reason": "Tony Marchand added a new VIP rule"
         }
       }
     }
   ],
   "agent_prompt_updated": true,
   "new_rules_added": [
-    "Hurricane damage goes to storm division"
+    "is this for a residential or commercial property? Always. Every call.",
+    "if they mention hurricane damage specifically, that goes to our storm division"
   ],
   "integration_updates": [],
   "special_rules_updates": [
-    "Hurricane damage goes to storm division"
+    "Flag insurance claims for separate follow-up by the dedicated insurance team",
+    "if they mention hurricane damage specifically, that goes to our storm division"
   ],
   "greeting_updated": true,
   "greeting_new_value": "Gulf Coast Roofing, Houston's trusted roofers",
-  "total_changes": 6
+  "total_changes": 7
 }

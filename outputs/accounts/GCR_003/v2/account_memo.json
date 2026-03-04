@@ -48,20 +48,16 @@
   "after_hours_flow_summary": "Take a message with required information and we'll follow up in the morning",
   "office_hours_flow_summary": "Route emergencies to Ray, non-emergencies can be handled by taking a message",
   "special_rules": [
-    "Flag insurance claims for separate follow-up",
-    "Hurricane damage goes to storm division"
+    "Flag insurance claims for separate follow-up by the dedicated insurance team",
+    "is this for a residential or commercial property? Always. Every call.",
+    "if they mention hurricane damage specifically, that goes to our storm division"
   ],
   "questions_or_unknowns": [],
-  "notes": "Gulf Coast Roofing has a dedicated insurance team and requires specific information for non-emergency messages",
-  "greeting_update": "Gulf Coast Roofing, Houston's trusted roofers",
+  "notes": "Gulf Coast Roofing has a dedicated insurance team and uses AccuLynx for project management",
   "v1_to_v2_changes": {
     "business_hours": {
-      "old_value": {
-        "end": "7:00 PM"
-      },
-      "new_value": {
-        "end": "5:00 PM"
-      },
+      "old_value": "7:00 PM",
+      "new_value": "5:00 PM",
       "reason": "Tony Marchand mentioned they cut back Saturday hours"
     },
     "emergency_routing_rules.step_1.phone": {
@@ -70,26 +66,31 @@
       "reason": "Ray got promoted and Marcus is the new emergency contact"
     },
     "emergency_definition": {
-      "old_value": null,
+      "old_value": "null",
       "new_value": "tarp fell off a previously damaged roof",
       "reason": "Tony Marchand added a new emergency definition"
     },
     "call_transfer_rules.collect_before_transfer": {
-      "old_value": null,
+      "old_value": "null",
       "new_value": "Residential or Commercial",
       "reason": "Tony Marchand wanted the agent to always ask about residential or commercial property"
     },
     "special_rules": {
-      "old_value": "Flag insurance claims for separate follow-up",
-      "new_value": "Flag insurance claims for separate follow-up, Hurricane damage goes to storm division",
-      "reason": "Tony Marchand added a new VIP rule for hurricane damage"
+      "old_value": "null",
+      "new_value": "if they mention hurricane damage specifically, that goes to our storm division",
+      "reason": "Tony Marchand added a new VIP rule"
     }
   },
   "_meta": {
     "version": "v2",
-    "created_at": "2026-03-04T10:39:21.872085",
-    "updated_at": "2026-03-04T12:02:35.413482",
+    "created_at": "2026-03-04T22:35:35.794022",
+    "updated_at": "2026-03-04T22:37:36.631102",
     "source": "onboarding_call",
     "pipeline": "pipeline_b"
-  }
+  },
+  "new_rules_added": [
+    "is this for a residential or commercial property? Always. Every call.",
+    "if they mention hurricane damage specifically, that goes to our storm division"
+  ],
+  "greeting": "Gulf Coast Roofing, Houston's trusted roofers"
 }

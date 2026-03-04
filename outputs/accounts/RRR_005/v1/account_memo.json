@@ -47,20 +47,20 @@
     ]
   },
   "integration_constraints": [
-    "do not reference Xactimate to callers",
-    "do not reference RMS to callers"
+    "Xactimate",
+    "RMS"
   ],
-  "after_hours_flow_summary": "Take emergency calls around the clock and non-emergency calls with detailed info for callback within 2 hours",
-  "office_hours_flow_summary": "Office team available Monday through Friday 8am to 6pm Eastern for non-emergency calls",
+  "after_hours_flow_summary": "Take detailed info and call back within 2 hours for non-emergencies, route emergencies to dispatch line",
+  "office_hours_flow_summary": "Office team available to handle calls during business hours",
   "special_rules": [
     "flag if caller mentions insurance",
-    "note if caller says it's a rental property"
+    "note if rental property"
   ],
   "questions_or_unknowns": [],
-  "notes": "Rapid Response Restoration handles water damage, fire damage, and mold remediation in the Atlanta metro area with 24/7 emergency calls",
+  "notes": "Rapid Response Restoration handles water damage, fire damage, and mold remediation in the Atlanta metro area",
   "_meta": {
     "version": "v1",
-    "created_at": "2026-03-04T10:39:28.332875",
+    "created_at": "2026-03-04T22:35:42.365620",
     "source": "demo_call",
     "pipeline": "pipeline_a"
   }

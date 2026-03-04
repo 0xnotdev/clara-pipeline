@@ -33,42 +33,53 @@
   "call_transfer_rules": {
     "office_hours_transfer_to": null,
     "timeout_rings": null,
-    "if_no_answer": "take their info and tell them we'll have our estimator, Paula, call them back",
-    "collect_before_transfer": null
+    "if_no_answer": null,
+    "collect_before_transfer": [
+      "name",
+      "number",
+      "what it's about",
+      "project type"
+    ]
   },
   "integration_constraints": [
     "do not create sprinkler jobs in ServiceTrade",
     "do not create gas line estimates in ServiceTrade"
   ],
-  "after_hours_flow_summary": "Emergency calls are routed to Mike, non-emergency calls are messaged and returned the next morning",
+  "after_hours_flow_summary": "Emergency calls are routed to on-call tech, non-emergency calls are taken as messages",
   "office_hours_flow_summary": null,
   "special_rules": [
-    "escalate to Mike directly if caller is upset or threatening"
+    "escalate to Mike directly if caller is really upset or threatening",
+    "If someone specifically asks for an estimate for a new construction project, take their info and tell them we'll have our estimator, Paula, call them back."
   ],
   "questions_or_unknowns": [
-    "timezone for business hours"
+    "timezone"
   ],
   "notes": "Ace Plumbing and HVAC handles residential plumbing and HVAC work, with specific emergency and non-emergency call handling rules",
   "v1_to_v2_changes": {
-    "emergency_routing_rules": "Updated emergency routing to Mike as the sole contact",
-    "business_hours": "Added Sunday hours",
-    "emergency_definition": "Added 'gas smell' to emergency definition list",
-    "integration_constraints": "Added constraint to never create gas line estimates in ServiceTrade",
-    "call_transfer_rules": "Added new routing rule for new construction project estimates"
+    "added": [
+      "Sunday hours",
+      "new ServiceTrade constraint: do not create gas line estimates",
+      "new special rule: new construction project estimates",
+      "new greeting: Ace Plumbing and HVAC, serving Austin since 1998"
+    ],
+    "updated": [
+      "emergency routing rules",
+      "emergency definitions",
+      "integration constraints",
+      "greeting",
+      "special rules"
+    ],
+    "removed": [
+      "Carlos as emergency contact",
+      "step_2 in emergency routing rules",
+      "collect_before_transfer: what it's about"
+    ]
   },
   "_meta": {
     "version": "v2",
-    "created_at": "2026-03-04T10:39:15.224089",
-    "updated_at": "2026-03-04T12:01:28.800317",
+    "created_at": "2026-03-04T22:35:29.031550",
+    "updated_at": "2026-03-04T22:36:21.263675",
     "source": "onboarding_call",
     "pipeline": "pipeline_b"
-  },
-  "new_rules_added": [
-    "If someone specifically asks for an estimate for a new construction project, take their info and tell them we'll have our estimator, Paula, call them back."
-  ],
-  "greeting_update": "Ace Plumbing and HVAC, serving Austin since 1998",
-  "special_rules_updates": [
-    "escalate to Mike directly if caller is upset or threatening"
-  ],
-  "summary": "Updated emergency routing to Mike as the sole contact, added Sunday hours, updated emergency definitions, and added new ServiceTrade constraints and routing rules."
+  }
 }

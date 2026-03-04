@@ -1,10 +1,10 @@
 {
   "account_id": "RRR_005",
   "company_name": "Rapid Response Restoration",
-  "changelog_generated_at": "2026-03-04T12:04:22.959154",
+  "changelog_generated_at": "2026-03-04T22:39:17.699162",
   "version_from": "v1",
   "version_to": "v2",
-  "summary": "Rapid Response Restoration expanded its service area to include Charlotte, NC, and updated its emergency routing rules, special rules, and greeting to reflect this change.",
+  "summary": "Rapid Response Restoration expanded to serve Charlotte, NC, and updated emergency routing, definitions, and special rules to accommodate the new market and services.",
   "memo_field_changes": [
     {
       "field": "emergency_definition",
@@ -12,12 +12,6 @@
       "new_items": [
         "biohazard cleanup requests"
       ]
-    },
-    {
-      "field": "emergency_routing_rules.step_1.contact_name",
-      "change": "modified",
-      "old_value": "dispatch",
-      "new_value": "dispatch (Atlanta) or Charlotte dispatch"
     },
     {
       "field": "emergency_routing_rules.step_1.phone",
@@ -28,67 +22,70 @@
     {
       "field": "greeting",
       "change": "added",
-      "new_value": "Rapid Response Restoration, serving Atlanta and Charlotte"
+      "new_value": "Rapid Response Restoration, serving Atlanta and Charlotte."
     },
     {
       "field": "integration_constraints",
       "change": "items_added",
       "new_items": [
-        "do not reference Encircle to callers"
+        "Encircle"
+      ]
+    },
+    {
+      "field": "new_rules_added",
+      "change": "added",
+      "new_value": [
+        "Ask for city and zip code early in the call to determine market",
+        "If caller says FEMA or federal disaster declaration, escalate to Jerome directly",
+        "If caller says property is vacant or abandoned, flag as different liability situation"
       ]
     },
     {
       "field": "office_address",
       "change": "modified",
       "old_value": "3200 Peachtree Road NE, Atlanta GA 30305",
-      "new_value": "now also covers Charlotte, NC"
+      "new_value": "Expanded to serve Charlotte, NC"
     },
     {
       "field": "special_rules",
       "change": "items_added",
       "new_items": [
-        "flag if caller says the property is vacant or abandoned",
-        "call Jerome directly at 404-555-0612 if caller says FEMA or federal disaster declaration"
+        "flag if property is vacant or abandoned"
       ]
     },
     {
       "field": "v1_to_v2_changes",
       "change": "added",
       "new_value": {
-        "added": [
-          "ask for city and zip code early in the call to determine market",
-          "flag if caller says the property is vacant or abandoned",
-          "call Jerome directly at 404-555-0612 if caller says FEMA or federal disaster declaration"
+        "office_address": "Expanded to serve Charlotte, NC",
+        "emergency_routing_rules.step_1.phone": "404-555-0600 (Atlanta) or 704-555-0700 (Charlotte)",
+        "emergency_definition": [
+          "biohazard cleanup requests"
         ],
-        "updated": [
-          "office_address",
-          "emergency_routing_rules.step_1.phone",
-          "emergency_routing_rules.step_1.contact_name",
-          "emergency_definition",
-          "integration_constraints",
-          "special_rules",
-          "greeting"
+        "integration_constraints": [
+          "Encircle"
         ],
-        "removed": []
+        "special_rules": [
+          "flag if property is vacant or abandoned"
+        ],
+        "greeting": "Rapid Response Restoration, serving Atlanta and Charlotte.",
+        "summary": "Rapid Response Restoration expanded to serve Charlotte, NC, and updated emergency routing, definitions, and special rules to accommodate the new market and services."
       }
     }
   ],
   "agent_prompt_updated": true,
   "new_rules_added": [
-    "ask for city and zip code early in the call to determine market",
-    "flag if caller says the property is vacant or abandoned",
-    "call Jerome directly at 404-555-0612 if caller says FEMA or federal disaster declaration"
+    "Ask for city and zip code early in the call to determine market",
+    "If caller says FEMA or federal disaster declaration, escalate to Jerome directly",
+    "If caller says property is vacant or abandoned, flag as different liability situation"
   ],
   "integration_updates": [
-    "do not reference Encircle to callers"
+    "Encircle"
   ],
   "special_rules_updates": [
-    "flag if caller mentions insurance",
-    "note if caller says it's a rental property",
-    "flag if caller says the property is vacant or abandoned",
-    "call Jerome directly at 404-555-0612 if caller says FEMA or federal disaster declaration"
+    "flag if property is vacant or abandoned"
   ],
   "greeting_updated": true,
-  "greeting_new_value": "Rapid Response Restoration, serving Atlanta and Charlotte",
+  "greeting_new_value": "Rapid Response Restoration, serving Atlanta and Charlotte.",
   "total_changes": 8
 }
